@@ -1,4 +1,6 @@
 ﻿using Application.Authentication;
+using Domain.IdentityManagement.RoleAggregate;
+using Domain.IdentityManagement.UserAggregate;
 using Infrastructure.Contexts;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -15,10 +17,12 @@ namespace Microsoft.Extensions.DependencyInjection
                 options.UseSqlServer(
                     Config.GetConnectionString("DefaultConnection")));
 
-            services.AddDefaultIdentity<IdentityUser>(o => o.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+            services.AddIdentity<User, Role>(o => o.SignIn.RequireConfirmedAccount = true)
+                .AddDefaultUI()
+                .AddEntityFrameworkStores<ApplicationDbContext>()                
+                .AddDefaultTokenProviders();                       
 
-            services.AddScoped<AuthenticationStateProvider, RevalidatingIdentityAuthenticationStateProvider<IdentityUser>>();
+            services.AddScoped<AuthenticationStateProvider, RevalidatingIdentityAuthenticationStateProvider<User>>();
             services.AddDatabaseDeveloperPageExceptionFilter();
 
             return services;

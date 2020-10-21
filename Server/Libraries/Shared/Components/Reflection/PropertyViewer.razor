@@ -1,0 +1,71 @@
+﻿@typeparam TValue 
+
+@code {
+
+    [Parameter] public TValue Value { get; set; }
+
+    IDictionary<string, PropertyWrapper> TypeProperties { get; set; } = new Dictionary<string, PropertyWrapper>();
+
+    protected override Task OnParametersSetAsync()
+    {
+        try
+        {
+            if (Value != null)
+            {
+                var props = typeof(TValue).GetProperties();
+
+                foreach (var item in props)
+                {
+                    var prop = Value.GetType().GetProperty(item.Name);
+
+                    if (prop != null)
+                    {
+                        var propValue = prop.GetValue(Value, null);
+
+                        if (propValue != null && propValue.GetType() == typeof(bool))
+                            TypeProperties.TryAdd(item.Name, new PropertyWrapper(propValue, item.Name, item));
+                    }
+                }
+            }
+        }
+        catch(Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+
+        return Task.CompletedTask;
+    }
+}
+
+@if (Value != null)
+{
+<div class="pl-0">
+    <span>Properties: </span>
+    <ol>
+        @foreach (var item in TypeProperties.Values)
+        {
+            <li>
+                <span>
+                    @item.DisplayValue
+                </span>
+
+                @if (item.Value is bool b)
+                {
+                    if (b)
+                    {
+                        <span class="text-success material-icons">done_outline</span>
+                    }
+                    else
+                    {
+                        <span class="text-danger material-icons">highlight_off</span>
+                    }
+                }
+                else
+                {
+                    <span>@item.PropertyValue</span>
+                }
+            </li>
+        }
+    </ol>
+</div>
+}

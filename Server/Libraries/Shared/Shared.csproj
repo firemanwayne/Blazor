@@ -17,7 +17,6 @@
 	<ItemGroup>
 	  <Folder Include="Components\Navigation\" />
 	  <Folder Include="Models\Abstract\" />
-	  <Folder Include="Models\Concrete\" />
 	</ItemGroup>
 	
 </Project>

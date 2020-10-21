@@ -90,29 +90,36 @@ using Microsoft.AspNetCore.Mvc.ViewFeatures;
 #line hidden
 #nullable disable
 #nullable restore
-#line 15 "H:\Projects\firemanwayne\Blazor\Server\Libraries\Shared\Components\_Imports.razor"
+#line 16 "H:\Projects\firemanwayne\Blazor\Server\Libraries\Shared\Components\_Imports.razor"
 using Shared.Components.Authentication;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 16 "H:\Projects\firemanwayne\Blazor\Server\Libraries\Shared\Components\_Imports.razor"
+#line 17 "H:\Projects\firemanwayne\Blazor\Server\Libraries\Shared\Components\_Imports.razor"
 using Shared.Components.Menus.VerticalMenu;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 17 "H:\Projects\firemanwayne\Blazor\Server\Libraries\Shared\Components\_Imports.razor"
+#line 18 "H:\Projects\firemanwayne\Blazor\Server\Libraries\Shared\Components\_Imports.razor"
 using Shared.Components.Menus.Navigation;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 18 "H:\Projects\firemanwayne\Blazor\Server\Libraries\Shared\Components\_Imports.razor"
+#line 19 "H:\Projects\firemanwayne\Blazor\Server\Libraries\Shared\Components\_Imports.razor"
 using Shared.Components.Layouts;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 21 "H:\Projects\firemanwayne\Blazor\Server\Libraries\Shared\Components\_Imports.razor"
+using Shared.Models.Concrete;
 
 #line default
 #line hidden
@@ -130,9 +137,9 @@ using Shared.Components.Layouts;
 
     [Parameter] public Func<string> RegisterUrl { get; set; }
 
-    [Parameter] public Func<string> Login { get; set; }
+    [Parameter] public Func<string> LoginUrl { get; set; }
 
-    [Parameter] public Func<string> Logout { get; set; }
+    [Parameter] public Func<string> LogoutUrl { get; set; }
 
     protected override void OnParametersSet()
     {

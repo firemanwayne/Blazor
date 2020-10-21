@@ -2,13 +2,13 @@
     <Authorized>
         <a href="Identity/Account/Manage">Hello, @context.User.Identity.Name!</a>
 
-        <form method="post" action="@Logout?.Invoke()">
+        <form method="post" action="@LogoutUrl?.Invoke()">
             <button type="submit" class="nav-link btn btn-link">Log out</button>
         </form>
     </Authorized>
     <NotAuthorized>
         <a href="@RegisterUrl?.Invoke()">Register</a>
-        <a href="@Login?.Invoke()">Log in</a>
+        <a href="@LoginUrl?.Invoke()">Log in</a>
     </NotAuthorized>
 </AuthorizeView>
 
@@ -16,9 +16,9 @@
 
     [Parameter] public Func<string> RegisterUrl { get; set; }
 
-    [Parameter] public Func<string> Login { get; set; }
+    [Parameter] public Func<string> LoginUrl { get; set; }
 
-    [Parameter] public Func<string> Logout { get; set; }
+    [Parameter] public Func<string> LogoutUrl { get; set; }
 
     protected override void OnParametersSet()
     {

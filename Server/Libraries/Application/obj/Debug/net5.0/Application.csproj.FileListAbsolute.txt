@@ -5,7 +5,6 @@ H:\Projects\firemanwayne\Blazor\Server\Libraries\Application\obj\Debug\net5.0\Ap
 H:\Projects\firemanwayne\Blazor\Server\Libraries\Application\obj\Debug\net5.0\Application.csproj.CoreCompileInputs.cache
 H:\Projects\firemanwayne\Blazor\Server\Libraries\Application\bin\Debug\net5.0\libman.json
 H:\Projects\firemanwayne\Blazor\Server\Libraries\Application\bin\Debug\net5.0\Shared.StaticWebAssets.xml
-H:\Projects\firemanwayne\Blazor\Server\Libraries\Application\bin\Debug\net5.0\Infrastructure.StaticWebAssets.xml
 H:\Projects\firemanwayne\Blazor\Server\Libraries\Application\bin\Debug\net5.0\Application.StaticWebAssets.xml
 H:\Projects\firemanwayne\Blazor\Server\Libraries\Application\bin\Debug\net5.0\Application.deps.json
 H:\Projects\firemanwayne\Blazor\Server\Libraries\Application\bin\Debug\net5.0\Application.dll
@@ -25,3 +24,4 @@ H:\Projects\firemanwayne\Blazor\Server\Libraries\Application\obj\Debug\net5.0\Ap
 H:\Projects\firemanwayne\Blazor\Server\Libraries\Application\obj\Debug\net5.0\Application.dll
 H:\Projects\firemanwayne\Blazor\Server\Libraries\Application\obj\Debug\net5.0\ref\Application.dll
 H:\Projects\firemanwayne\Blazor\Server\Libraries\Application\obj\Debug\net5.0\Application.pdb
+H:\Projects\firemanwayne\Blazor\Server\Libraries\Application\bin\Debug\net5.0\Infrastructure.StaticWebAssets.xml

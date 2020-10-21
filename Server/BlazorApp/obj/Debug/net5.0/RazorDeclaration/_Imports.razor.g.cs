@@ -77,6 +77,13 @@ using BlazorApp;
 #nullable disable
 #nullable restore
 #line 13 "H:\Projects\firemanwayne\Blazor\Server\BlazorApp\_Imports.razor"
+using BlazorApp.Pages;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 14 "H:\Projects\firemanwayne\Blazor\Server\BlazorApp\_Imports.razor"
 using Shared.Components.Layouts;
 
 #line default

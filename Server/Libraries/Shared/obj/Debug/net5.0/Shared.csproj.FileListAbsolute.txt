@@ -43,3 +43,10 @@ H:\Projects\firemanwayne\Blazor\Server\Libraries\Shared\obj\Debug\net5.0\Shared.
 H:\Projects\firemanwayne\Blazor\Server\Libraries\Shared\obj\Debug\net5.0\ref\Shared.dll
 H:\Projects\firemanwayne\Blazor\Server\Libraries\Shared\obj\Debug\net5.0\Shared.pdb
 H:\Projects\firemanwayne\Blazor\Server\Libraries\Shared\obj\Debug\net5.0\Shared.genruntimeconfig.cache
+H:\Projects\firemanwayne\Blazor\Server\Libraries\Shared\obj\Debug\net5.0\RazorDeclaration\Components\Reflection\PropertyViewer.razor.g.cs
+H:\Projects\firemanwayne\Blazor\Server\Libraries\Shared\obj\Debug\net5.0\RazorDeclaration\Components\Templates\AuthorizedFormTemplate.razor.g.cs
+H:\Projects\firemanwayne\Blazor\Server\Libraries\Shared\obj\Debug\net5.0\RazorDeclaration\Components\Templates\AuthorizedListTemplate.razor.g.cs
+H:\Projects\firemanwayne\Blazor\Server\Libraries\Shared\obj\Debug\net5.0\Razor\Components\Reflection\PropertyViewer.razor.g.cs
+H:\Projects\firemanwayne\Blazor\Server\Libraries\Shared\obj\Debug\net5.0\Razor\Components\Templates\AuthorizedFormTemplate.razor.g.cs
+H:\Projects\firemanwayne\Blazor\Server\Libraries\Shared\obj\Debug\net5.0\Razor\Components\Templates\AuthorizedListTemplate.razor.g.cs
+H:\Projects\firemanwayne\Blazor\Server\Libraries\Shared\obj\Debug\net5.0\Shared.csprojAssemblyReference.cache

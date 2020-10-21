@@ -1,0 +1,19 @@
+﻿@attribute [AllowAnonymous]
+
+<div class="row h-100 align-items-center" style="position:relative; z-index:1000;">
+    <div class="justify-content-center mx-auto" style="text-align:center;">        
+            <p style="color: #EEEEEE; font-size: xx-large; font-family:Roboto;">Redirecting...</p>
+        </div>
+</div>
+
+@code{  
+
+    [Inject] NavigationManager Navigate { get; set; }
+
+    protected override Task OnInitializedAsync()
+    {
+        Navigate.NavigateTo("/Login", true);
+
+        return Task.CompletedTask;
+    }
+}
