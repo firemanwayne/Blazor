@@ -1,0 +1,27 @@
+﻿<AuthorizeView>
+    <Authorized>
+        <a href="Identity/Account/Manage">Hello, @context.User.Identity.Name!</a>
+
+        <form method="post" action="@Logout?.Invoke()">
+            <button type="submit" class="nav-link btn btn-link">Log out</button>
+        </form>
+    </Authorized>
+    <NotAuthorized>
+        <a href="@RegisterUrl?.Invoke()">Register</a>
+        <a href="@Login?.Invoke()">Log in</a>
+    </NotAuthorized>
+</AuthorizeView>
+
+@code{
+
+    [Parameter] public Func<string> RegisterUrl { get; set; }
+
+    [Parameter] public Func<string> Login { get; set; }
+
+    [Parameter] public Func<string> Logout { get; set; }
+
+    protected override void OnParametersSet()
+    {
+        base.OnParametersSet();
+    }
+}

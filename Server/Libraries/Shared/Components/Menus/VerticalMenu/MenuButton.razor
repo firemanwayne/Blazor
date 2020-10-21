@@ -1,0 +1,45 @@
+﻿@if (IsVisible)
+{
+    <a @onclick="@(() => Parent.ActivatePage(ButtonId))"
+       class="nav-link @CssClass show"
+       id="v-pills-@ButtonId-tab"
+       data-toggle="pill"
+       href="#v-pills-@ButtonId"
+       role="tab"
+       aria-controls="v-pills-@ButtonId"
+       aria-selected="true">@ButtonText</a>
+}
+
+@code{
+    [Parameter] public string ButtonText { get; set; }
+
+    [Parameter] public string ButtonId { get; set; }
+
+    [Parameter] public bool IsVisible { get; set; } = true;
+
+    [CascadingParameter] VerticalMenuControl Parent { get; set; }
+
+    string CssClass { get; set; }
+
+    bool IsActive { get; set; }
+
+    protected override Task OnInitializedAsync()
+    {
+        Parent.AddButton(this);
+
+        return Task.CompletedTask;
+    }
+
+    internal void Activate()
+    {
+        IsActive = true;
+        CssClass = "active";
+
+
+    }
+    internal void DeActivate()
+    {
+        IsActive = false;
+        CssClass = "";
+    }
+}

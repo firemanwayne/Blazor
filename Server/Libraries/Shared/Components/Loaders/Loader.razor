@@ -1,0 +1,77 @@
+﻿
+<div class="container ">
+    <h3 class="w3-text-black">@Message@Dots</h3>
+</div>
+
+@code{
+    static int CurrentMessage;
+    static int MessageCount;
+    static int DotCount;
+    const int DefaultDotCount = 5;
+    string Message = "Loading";
+    static string Dots = "";
+
+    protected async override Task OnInitializedAsync()
+    {
+        MessageCount = Messages.Count();
+        await UpdateMessage();
+    }
+
+    protected override Task OnAfterRenderAsync(bool firstRender)
+    {
+        return base.OnAfterRenderAsync(firstRender);
+    }
+
+    async Task StartDots()
+    {
+        while (DotCount <= DefaultDotCount)
+        {
+            Dots += string.Format("{0}", '.');
+            DotCount++;
+
+            await Task.Delay(1000);
+
+            StateHasChanged();
+        }
+        DotCount = 0;
+        Dots = "";
+
+        StateHasChanged();
+
+        await StartDots();
+    }
+    async Task UpdateMessage()
+    {
+        while (CurrentMessage < MessageCount)
+        {
+            Message = string.Format("{0}", Messages.ElementAt(CurrentMessage));
+            CurrentMessage++;
+
+            await Task.Delay(2000);
+
+            StateHasChanged();
+        }
+        CurrentMessage = 0;
+
+        await UpdateMessage();
+    }
+
+    static readonly IEnumerable<string> Messages = new string[]
+    {
+            "Loading Data...",
+            "Beep Boop Beep...",
+            "Dialing NASA...",
+            "Linking satellites...",
+            "Drawing words...",
+            "Erasing mispelled words...",
+            "Erasing more misspelled words...",
+            "Linking more Satellites...",
+            "Collecting donations...",
+            "Watching commercials...",
+            "Calling robots...",
+            "Calling more robots...",
+            "Too many robots...",
+            "Fighting robots...",
+            "Robots fighting back..."
+    };
+}
