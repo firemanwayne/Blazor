@@ -1,4 +1,54 @@
 ﻿@page "/"
 @attribute [Authorize]
 
-<span>Hello</span>
+@using System.IO
+@using Shared.Models.Concrete
+
+<div class="container">
+    <InputFile OnChange="HandleFileChange" multiple class="form-control" />
+</div>
+
+@if (Sheet != null)
+{
+<div class="container" style="max-height:800px;overflow-y:auto">
+    <table class="table table-bordered">
+        <Virtualize TItem="SheetRow" Context="d" Items="Sheet.DataRows">
+
+            <ItemContent>
+                <tr>
+                    <td>Row: @d.Index</td>
+                    @foreach (var item in d.Columns)
+                    {
+                        <td>Column: @item.ColumnIndex</td>
+                        <td>@item.Value</td>
+                    }
+                </tr>
+            </ItemContent>
+            <Placeholder>
+                <p>Loading&hellip;</p>
+            </Placeholder>
+
+        </Virtualize>
+    </table>
+</div>
+}
+@code{
+
+    SpreadSheet Sheet { get; set; }
+
+    async Task HandleFileChange(InputFileChangeEventArgs a)
+    {
+        if (a.File != null)
+        {
+            var buffer = new byte[a.File.Size];
+            await a.File.OpenReadStream().ReadAsync(buffer);
+            var ms = new MemoryStream(buffer);
+
+            Sheet = new SpreadSheet(a.File);
+            var reader = new StreamReader(ms);
+
+            while (!reader.EndOfStream)
+                Sheet.AddRow(await reader.ReadLineAsync());
+        }
+    }
+}

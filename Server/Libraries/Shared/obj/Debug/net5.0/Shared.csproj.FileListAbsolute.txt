@@ -42,3 +42,4 @@ H:\Projects\firemanwayne\Blazor\Server\Libraries\Shared\obj\Debug\net5.0\Shared.
 H:\Projects\firemanwayne\Blazor\Server\Libraries\Shared\obj\Debug\net5.0\ref\Shared.dll
 H:\Projects\firemanwayne\Blazor\Server\Libraries\Shared\obj\Debug\net5.0\Shared.pdb
 H:\Projects\firemanwayne\Blazor\Server\Libraries\Shared\obj\Debug\net5.0\Shared.genruntimeconfig.cache
+H:\Projects\firemanwayne\Blazor\Server\Libraries\Shared\obj\Debug\net5.0\Shared.csprojAssemblyReference.cache

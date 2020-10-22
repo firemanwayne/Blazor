@@ -16,7 +16,6 @@
 
 	<ItemGroup>
 	  <Folder Include="Components\Navigation\" />
-	  <Folder Include="Models\Abstract\" />
 	</ItemGroup>
 	
 </Project>

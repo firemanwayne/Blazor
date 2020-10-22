@@ -83,6 +83,20 @@ using BlazorApp.Pages;
 #line hidden
 #nullable disable
 #nullable restore
+#line 4 "H:\Projects\firemanwayne\Blazor\Server\BlazorApp\Pages\Index.razor"
+using System.IO;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 5 "H:\Projects\firemanwayne\Blazor\Server\BlazorApp\Pages\Index.razor"
+using Shared.Models.Concrete;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
 #line 2 "H:\Projects\firemanwayne\Blazor\Server\BlazorApp\Pages\Index.razor"
            [Authorize]
 
@@ -97,6 +111,31 @@ using BlazorApp.Pages;
         {
         }
         #pragma warning restore 1998
+#nullable restore
+#line 35 "H:\Projects\firemanwayne\Blazor\Server\BlazorApp\Pages\Index.razor"
+      
+
+    SpreadSheet Sheet { get; set; }
+
+    async Task HandleFileChange(InputFileChangeEventArgs a)
+    {
+        if (a.File != null)
+        {
+            var buffer = new byte[a.File.Size];
+            await a.File.OpenReadStream().ReadAsync(buffer);
+            var ms = new MemoryStream(buffer);
+
+            Sheet = new SpreadSheet(a.File);
+            var reader = new StreamReader(ms);
+
+            while (!reader.EndOfStream)
+                Sheet.AddRow(await reader.ReadLineAsync());
+        }
+    }
+
+#line default
+#line hidden
+#nullable disable
     }
 }
 #pragma warning restore 1591
