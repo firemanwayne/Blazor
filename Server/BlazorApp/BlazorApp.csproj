@@ -1,23 +1,22 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
     <UserSecretsId>aspnet-BlazorApp-6304AB07-F551-47BB-BF6D-DF4E53282AFF</UserSecretsId>
   </PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="5.0.0-rc.2.20475.17" />
-    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="5.0.0-rc.2.20475.17" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.0-rc.2.20475.6" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.0-rc.2.20475.6">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.0-rc.2.20516.1" />
+ <ItemGroup>  
+  
+	 <PackageReference Include="Serilog.AspNetCore" Version="3.4.1-dev-00180" />
+	 <PackageReference Include="Serilog.Extensions.Logging" Version="3.0.2-dev-10281" />
+	 <PackageReference Include="Serilog.Formatting.Compact" Version="1.1.1-dev-00940" />
+	 <PackageReference Include="Serilog.Sinks.File" Version="5.0.0-dev-00887" />
+	 <PackageReference Include="Serilog.Sinks.Console" Version="4.0.0-dev-00839" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Libraries\Application\Application.csproj" />
+    <ProjectReference Include="..\Libraries\IdentityUI\IdentityUI.csproj" />
   </ItemGroup>
 
 </Project>

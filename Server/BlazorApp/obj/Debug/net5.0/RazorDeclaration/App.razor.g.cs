@@ -83,8 +83,8 @@ using BlazorApp.Pages;
 #line hidden
 #nullable disable
 #nullable restore
-#line 14 "H:\Projects\firemanwayne\Blazor\Server\BlazorApp\_Imports.razor"
-using Shared.Components.Layouts;
+#line 1 "H:\Projects\firemanwayne\Blazor\Server\BlazorApp\App.razor"
+using IdentityUI.Pages;
 
 #line default
 #line hidden

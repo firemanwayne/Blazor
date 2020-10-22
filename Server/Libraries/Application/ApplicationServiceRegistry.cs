@@ -2,10 +2,15 @@
 using Domain.IdentityManagement.RoleAggregate;
 using Domain.IdentityManagement.UserAggregate;
 using Infrastructure.Contexts;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Components.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using System;
+using System.Security.Claims;
+using System.Threading.Tasks;
 
 namespace Microsoft.Extensions.DependencyInjection
 {
@@ -17,12 +22,66 @@ namespace Microsoft.Extensions.DependencyInjection
                 options.UseSqlServer(
                     Config.GetConnectionString("DefaultConnection")));
 
-            services.AddIdentity<User, Role>(o => o.SignIn.RequireConfirmedAccount = true)
+            services.AddIdentity<User, Role>(
+                o => {
+                    o.SignIn = new SignInOptions 
+                    {
+                        RequireConfirmedEmail = true,
+                    };
+                    o.Password = new PasswordOptions 
+                    {
+                        RequireDigit = true,
+                        RequireLowercase = true,
+                        RequireUppercase = true 
+                    };                    
+                    o.User = new UserOptions
+                    {
+                        RequireUniqueEmail = true,
+                    };
+                })                
+                .AddSignInManager<SignInManager<User>>()
+                .AddUserManager<UserManager<User>>()
                 .AddDefaultUI()
                 .AddEntityFrameworkStores<ApplicationDbContext>()                
-                .AddDefaultTokenProviders();                       
+                .AddDefaultTokenProviders();
+
+            services.ConfigureApplicationCookie(o => 
+            {
+                o.LoginPath = "/Login";
+                o.AccessDeniedPath = "/Account/AccessDenied";
+                o.SlidingExpiration = true;
+                o.ExpireTimeSpan = TimeSpan.FromMinutes(30);
+                o.Cookie = new CookieBuilder
+                {                    
+                    SameSite = SameSiteMode.None,
+                    Name = "Blazor-Shared-Cookie",
+                    HttpOnly = true,
+                    IsEssential = true
+                };
+                o.Events = new CookieAuthenticationEvents()
+                {
+                    OnRedirectToLogin = ctx =>
+                    {
+                        var rdt = ctx.Request.Path.ToUriComponent();
+
+                        if (ctx.Request.Path.HasValue)
+                            ctx.Response.Redirect("/Login");
+                        else
+                            ctx.Response.Redirect("/Login");
+
+                        return Task.CompletedTask;
+                    },
+                    OnRedirectToAccessDenied = ctx =>
+                    {
+                        ctx.Response.Redirect("/Login");
+
+                        return Task.CompletedTask;
+                    }
+                };
+            });
 
             services.AddScoped<AuthenticationStateProvider, RevalidatingIdentityAuthenticationStateProvider<User>>();
+
             services.AddDatabaseDeveloperPageExceptionFilter();
 
             return services;

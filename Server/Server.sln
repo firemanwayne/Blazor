@@ -3,15 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30615.102
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorApp", "BlazorApp\BlazorApp.csproj", "{57112986-FD6F-413E-B698-6280007E895B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorApp", "BlazorApp\BlazorApp.csproj", "{57112986-FD6F-413E-B698-6280007E895B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "Libraries\Application\Application.csproj", "{A7862CB3-0A96-4281-81B8-A264CC59D591}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "Libraries\Application\Application.csproj", "{A7862CB3-0A96-4281-81B8-A264CC59D591}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Libraries\Domain\Domain.csproj", "{31592FB1-241E-4AC3-94DC-10B4B47189B5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "Libraries\Domain\Domain.csproj", "{31592FB1-241E-4AC3-94DC-10B4B47189B5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Libraries\Infrastructure\Infrastructure.csproj", "{998D6D49-9CC4-4FFD-9AE8-55144E1BA721}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure", "Libraries\Infrastructure\Infrastructure.csproj", "{998D6D49-9CC4-4FFD-9AE8-55144E1BA721}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared", "Libraries\Shared\Shared.csproj", "{D0A72AC8-7B8F-457A-ADE5-524F2A08339D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shared", "Libraries\Shared\Shared.csproj", "{D0A72AC8-7B8F-457A-ADE5-524F2A08339D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityUI", "Libraries\IdentityUI\IdentityUI.csproj", "{013EF8CD-0922-462E-996C-94E05671C634}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{D0A72AC8-7B8F-457A-ADE5-524F2A08339D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D0A72AC8-7B8F-457A-ADE5-524F2A08339D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D0A72AC8-7B8F-457A-ADE5-524F2A08339D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{013EF8CD-0922-462E-996C-94E05671C634}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{013EF8CD-0922-462E-996C-94E05671C634}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{013EF8CD-0922-462E-996C-94E05671C634}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{013EF8CD-0922-462E-996C-94E05671C634}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

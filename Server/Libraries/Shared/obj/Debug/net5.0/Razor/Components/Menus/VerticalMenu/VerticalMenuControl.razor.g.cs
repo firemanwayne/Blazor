@@ -101,21 +101,7 @@ using Shared.Components.Menus.VerticalMenu;
 #line hidden
 #nullable disable
 #nullable restore
-#line 18 "H:\Projects\firemanwayne\Blazor\Server\Libraries\Shared\Components\_Imports.razor"
-using Shared.Components.Menus.Navigation;
-
-#line default
-#line hidden
-#nullable disable
-#nullable restore
 #line 19 "H:\Projects\firemanwayne\Blazor\Server\Libraries\Shared\Components\_Imports.razor"
-using Shared.Components.Layouts;
-
-#line default
-#line hidden
-#nullable disable
-#nullable restore
-#line 21 "H:\Projects\firemanwayne\Blazor\Server\Libraries\Shared\Components\_Imports.razor"
 using Shared.Models.Concrete;
 
 #line default

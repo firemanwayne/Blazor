@@ -12,61 +12,54 @@ using System.Threading.Tasks;
 
 namespace Application.Authentication
 {
-    public class RevalidatingIdentityAuthenticationStateProvider<TUser>
-        : RevalidatingServerAuthenticationStateProvider where TUser : class
+    public class RevalidatingIdentityAuthenticationStateProvider<TUser> : RevalidatingServerAuthenticationStateProvider where TUser : class
     {
-        private readonly IServiceScopeFactory _scopeFactory;
-        private readonly IdentityOptions _options;
+        private readonly IServiceScopeFactory ScopeFactory;
+        private readonly IdentityOptions Options;
 
         public RevalidatingIdentityAuthenticationStateProvider(
-            ILoggerFactory loggerFactory,
-            IServiceScopeFactory scopeFactory,
-            IOptions<IdentityOptions> optionsAccessor)
-            : base(loggerFactory)
+            ILoggerFactory LoggerFactory,
+            IServiceScopeFactory ScopeFactory,
+            IOptions<IdentityOptions> Options) : base(LoggerFactory)
         {
-            _scopeFactory = scopeFactory;
-            _options = optionsAccessor.Value;
+            this.ScopeFactory = ScopeFactory;
+            this.Options = Options.Value;
         }
 
         protected override TimeSpan RevalidationInterval => TimeSpan.FromMinutes(30);
 
-        protected override async Task<bool> ValidateAuthenticationStateAsync(
-            AuthenticationState authenticationState, CancellationToken cancellationToken)
+        protected override async Task<bool> ValidateAuthenticationStateAsync(AuthenticationState state, CancellationToken token)
         {
             // Get the user manager from a new scope to ensure it fetches fresh data
-            var scope = _scopeFactory.CreateScope();
+            var scope = ScopeFactory.CreateScope();
             try
             {
                 var userManager = scope.ServiceProvider.GetRequiredService<UserManager<TUser>>();
-                return await ValidateSecurityStampAsync(userManager, authenticationState.User);
+
+                return await ValidateSecurityStampAsync(userManager, state.User);
             }
             finally
             {
-                if (scope is IAsyncDisposable asyncDisposable)
-                {
-                    await asyncDisposable.DisposeAsync();
-                }
-                else
-                {
-                    scope.Dispose();
-                }
+                if (scope is IAsyncDisposable asyncDisposable)                
+                    await asyncDisposable.DisposeAsync();                
+                else                
+                    scope.Dispose();                
             }
         }
 
-        private async Task<bool> ValidateSecurityStampAsync(UserManager<TUser> userManager, ClaimsPrincipal principal)
+        private async Task<bool> ValidateSecurityStampAsync(UserManager<TUser> userManager, ClaimsPrincipal User)
         {
-            var user = await userManager.GetUserAsync(principal);
-            if (user == null)
-            {
+            var user = await userManager.GetUserAsync(User);
+
+            if (user == null)            
                 return false;
-            }
-            else if (!userManager.SupportsUserSecurityStamp)
-            {
-                return true;
-            }
+            
+            else if (!userManager.SupportsUserSecurityStamp)            
+                return true;            
+
             else
             {
-                var principalStamp = principal.FindFirstValue(_options.ClaimsIdentity.SecurityStampClaimType);
+                var principalStamp = User.FindFirstValue(Options.ClaimsIdentity.SecurityStampClaimType);
                 var userStamp = await userManager.GetSecurityStampAsync(user);
                 return principalStamp == userStamp;
             }
