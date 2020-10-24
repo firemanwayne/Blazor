@@ -6385,8 +6385,8 @@
     },
     "ExportToExcel/1.0.0": {
       "type": "project",
-      "path": "../../../ExportToExcel/ExportToExcel.csproj",
-      "msbuildProject": "../../../ExportToExcel/ExportToExcel.csproj"
+      "path": "../../../../ExportToExcel/ExportToExcel.csproj",
+      "msbuildProject": "../../../../ExportToExcel/ExportToExcel.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -6401,19 +6401,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\wayne\\.nuget\\packages\\": {}
+    "C:\\Users\\Wayne\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\wayne\\source\\repos\\Blazor\\Server\\Libraries\\Shared\\Shared.csproj",
+      "projectUniqueName": "H:\\Projects\\firemanwayne\\Blazor\\Server\\Libraries\\Shared\\Shared.csproj",
       "projectName": "Shared",
-      "projectPath": "C:\\Users\\wayne\\source\\repos\\Blazor\\Server\\Libraries\\Shared\\Shared.csproj",
-      "packagesPath": "C:\\Users\\wayne\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\wayne\\source\\repos\\Blazor\\Server\\Libraries\\Shared\\obj\\",
+      "projectPath": "H:\\Projects\\firemanwayne\\Blazor\\Server\\Libraries\\Shared\\Shared.csproj",
+      "packagesPath": "C:\\Users\\Wayne\\.nuget\\packages\\",
+      "outputPath": "H:\\Projects\\firemanwayne\\Blazor\\Server\\Libraries\\Shared\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\wayne\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Wayne\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -6427,8 +6427,8 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "C:\\Users\\wayne\\source\\repos\\Blazor\\ExportToExcel\\ExportToExcel.csproj": {
-              "projectPath": "C:\\Users\\wayne\\source\\repos\\Blazor\\ExportToExcel\\ExportToExcel.csproj"
+            "H:\\Projects\\firemanwayne\\ExportToExcel\\ExportToExcel.csproj": {
+              "projectPath": "H:\\Projects\\firemanwayne\\ExportToExcel\\ExportToExcel.csproj"
             }
           }
         }

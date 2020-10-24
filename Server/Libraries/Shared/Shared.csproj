@@ -19,7 +19,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\..\..\ExportToExcel\ExportToExcel.csproj" />
+	  <ProjectReference Include="..\..\..\..\ExportToExcel\ExportToExcel.csproj" />
 	</ItemGroup>
 	
 </Project>

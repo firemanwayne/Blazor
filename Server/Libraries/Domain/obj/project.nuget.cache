@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "39pfP0ZXzZSEuV7Xcc705mtsIic1zMNETxfDPGKUjWClmVb4y21Z6ptwZy580yiSeh/zzCCTEqjTdtXZf0nKXA==",
+  "dgSpecHash": "dFoKUdn/oBFaCg2qDa5lhLCc5u+wWdL8OcShh8HxtYLXYONfoW5ZDEFLx1vNJrAt2k2YldXLJjQJwBVW4ggfoQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\wayne\\source\\repos\\Blazor\\Server\\Libraries\\Domain\\Domain.csproj",
+  "projectFilePath": "H:\\Projects\\firemanwayne\\Blazor\\Server\\Libraries\\Domain\\Domain.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

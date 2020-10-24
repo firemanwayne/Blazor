@@ -1,7 +1,7 @@
 ﻿<StaticWebAssets Version="1.0">
-  <ContentRoot BasePath="/" Path="C:\Users\wayne\source\repos\Blazor\Server\BlazorApp\obj\Debug\net5.0\scopedcss\bundle\" />
-  <ContentRoot BasePath="/Identity" Path="C:\Users\wayne\.nuget\packages\microsoft.aspnetcore.identity.ui\5.0.0-rc.2.20475.17\staticwebassets\V4\" />
-  <ContentRoot BasePath="_content/ExportToExcel" Path="C:\Users\wayne\source\repos\Blazor\ExportToExcel\wwwroot\" />
-  <ContentRoot BasePath="_content/IdentityUI" Path="C:\Users\wayne\source\repos\Blazor\Server\Libraries\IdentityUI\wwwroot\" />
-  <ContentRoot BasePath="_content/Shared" Path="C:\Users\wayne\source\repos\Blazor\Server\Libraries\Shared\wwwroot\" />
+  <ContentRoot BasePath="/" Path="H:\Projects\firemanwayne\Blazor\Server\BlazorApp\obj\Debug\net5.0\scopedcss\bundle\" />
+  <ContentRoot BasePath="/Identity" Path="C:\Users\Wayne\.nuget\packages\microsoft.aspnetcore.identity.ui\5.0.0-rc.2.20475.17\staticwebassets\V4\" />
+  <ContentRoot BasePath="_content/ExportToExcel" Path="H:\Projects\firemanwayne\ExportToExcel\wwwroot\" />
+  <ContentRoot BasePath="_content/IdentityUI" Path="H:\Projects\firemanwayne\Blazor\Server\Libraries\IdentityUI\wwwroot\" />
+  <ContentRoot BasePath="_content/Shared" Path="H:\Projects\firemanwayne\Blazor\Server\Libraries\Shared\wwwroot\" />
 </StaticWebAssets>
