@@ -1,6 +1,7 @@
 ﻿using Application.Authentication;
 using Domain.IdentityManagement.RoleAggregate;
 using Domain.IdentityManagement.UserAggregate;
+using ExportToExcel;
 using Infrastructure.Contexts;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Components.Authorization;
@@ -18,6 +19,8 @@ namespace Microsoft.Extensions.DependencyInjection
     {
         public static IServiceCollection AddApplicationServices(this IServiceCollection services, IConfiguration Config)
         {
+            services.AddExportToExcel();
+
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Config.GetConnectionString("DefaultConnection")));

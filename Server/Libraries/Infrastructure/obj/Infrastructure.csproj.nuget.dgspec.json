@@ -1,20 +1,93 @@
 {
   "format": 1,
   "restore": {
-    "H:\\Projects\\firemanwayne\\Blazor\\Server\\Libraries\\Infrastructure\\Infrastructure.csproj": {}
+    "C:\\Users\\wayne\\source\\repos\\Blazor\\Server\\Libraries\\Infrastructure\\Infrastructure.csproj": {}
   },
   "projects": {
-    "H:\\Projects\\firemanwayne\\Blazor\\Server\\Libraries\\Domain\\Domain.csproj": {
+    "C:\\Users\\wayne\\source\\repos\\Blazor\\ExportToExcel\\ExportToExcel.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "H:\\Projects\\firemanwayne\\Blazor\\Server\\Libraries\\Domain\\Domain.csproj",
-        "projectName": "Domain",
-        "projectPath": "H:\\Projects\\firemanwayne\\Blazor\\Server\\Libraries\\Domain\\Domain.csproj",
-        "packagesPath": "C:\\Users\\Wayne\\.nuget\\packages\\",
-        "outputPath": "H:\\Projects\\firemanwayne\\Blazor\\Server\\Libraries\\Domain\\obj\\",
+        "projectUniqueName": "C:\\Users\\wayne\\source\\repos\\Blazor\\ExportToExcel\\ExportToExcel.csproj",
+        "projectName": "ExportToExcel",
+        "projectPath": "C:\\Users\\wayne\\source\\repos\\Blazor\\ExportToExcel\\ExportToExcel.csproj",
+        "packagesPath": "C:\\Users\\wayne\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\wayne\\source\\repos\\Blazor\\ExportToExcel\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Wayne\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\wayne\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "Microsoft.Extensions.DependencyInjection.Abstractions": {
+              "target": "Package",
+              "version": "[5.0.0-rc.2.20475.5, )"
+            },
+            "Microsoft.TypeScript.MSBuild": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[4.0.3, )"
+            },
+            "NPOI": {
+              "target": "Package",
+              "version": "[2.5.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100-rc.2.20479.15\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\wayne\\source\\repos\\Blazor\\Server\\Libraries\\Domain\\Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\wayne\\source\\repos\\Blazor\\Server\\Libraries\\Domain\\Domain.csproj",
+        "projectName": "Domain",
+        "projectPath": "C:\\Users\\wayne\\source\\repos\\Blazor\\Server\\Libraries\\Domain\\Domain.csproj",
+        "packagesPath": "C:\\Users\\wayne\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\wayne\\source\\repos\\Blazor\\Server\\Libraries\\Domain\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\wayne\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -61,17 +134,17 @@
         }
       }
     },
-    "H:\\Projects\\firemanwayne\\Blazor\\Server\\Libraries\\Infrastructure\\Infrastructure.csproj": {
+    "C:\\Users\\wayne\\source\\repos\\Blazor\\Server\\Libraries\\Infrastructure\\Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "H:\\Projects\\firemanwayne\\Blazor\\Server\\Libraries\\Infrastructure\\Infrastructure.csproj",
+        "projectUniqueName": "C:\\Users\\wayne\\source\\repos\\Blazor\\Server\\Libraries\\Infrastructure\\Infrastructure.csproj",
         "projectName": "Infrastructure",
-        "projectPath": "H:\\Projects\\firemanwayne\\Blazor\\Server\\Libraries\\Infrastructure\\Infrastructure.csproj",
-        "packagesPath": "C:\\Users\\Wayne\\.nuget\\packages\\",
-        "outputPath": "H:\\Projects\\firemanwayne\\Blazor\\Server\\Libraries\\Infrastructure\\obj\\",
+        "projectPath": "C:\\Users\\wayne\\source\\repos\\Blazor\\Server\\Libraries\\Infrastructure\\Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\wayne\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\wayne\\source\\repos\\Blazor\\Server\\Libraries\\Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Wayne\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\wayne\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -85,11 +158,11 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "H:\\Projects\\firemanwayne\\Blazor\\Server\\Libraries\\Domain\\Domain.csproj": {
-                "projectPath": "H:\\Projects\\firemanwayne\\Blazor\\Server\\Libraries\\Domain\\Domain.csproj"
+              "C:\\Users\\wayne\\source\\repos\\Blazor\\Server\\Libraries\\Domain\\Domain.csproj": {
+                "projectPath": "C:\\Users\\wayne\\source\\repos\\Blazor\\Server\\Libraries\\Domain\\Domain.csproj"
               },
-              "H:\\Projects\\firemanwayne\\Blazor\\Server\\Libraries\\Shared\\Shared.csproj": {
-                "projectPath": "H:\\Projects\\firemanwayne\\Blazor\\Server\\Libraries\\Shared\\Shared.csproj"
+              "C:\\Users\\wayne\\source\\repos\\Blazor\\Server\\Libraries\\Shared\\Shared.csproj": {
+                "projectPath": "C:\\Users\\wayne\\source\\repos\\Blazor\\Server\\Libraries\\Shared\\Shared.csproj"
               }
             }
           }
@@ -125,17 +198,17 @@
         }
       }
     },
-    "H:\\Projects\\firemanwayne\\Blazor\\Server\\Libraries\\Shared\\Shared.csproj": {
+    "C:\\Users\\wayne\\source\\repos\\Blazor\\Server\\Libraries\\Shared\\Shared.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "H:\\Projects\\firemanwayne\\Blazor\\Server\\Libraries\\Shared\\Shared.csproj",
+        "projectUniqueName": "C:\\Users\\wayne\\source\\repos\\Blazor\\Server\\Libraries\\Shared\\Shared.csproj",
         "projectName": "Shared",
-        "projectPath": "H:\\Projects\\firemanwayne\\Blazor\\Server\\Libraries\\Shared\\Shared.csproj",
-        "packagesPath": "C:\\Users\\Wayne\\.nuget\\packages\\",
-        "outputPath": "H:\\Projects\\firemanwayne\\Blazor\\Server\\Libraries\\Shared\\obj\\",
+        "projectPath": "C:\\Users\\wayne\\source\\repos\\Blazor\\Server\\Libraries\\Shared\\Shared.csproj",
+        "packagesPath": "C:\\Users\\wayne\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\wayne\\source\\repos\\Blazor\\Server\\Libraries\\Shared\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Wayne\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\wayne\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -148,7 +221,11 @@
         "frameworks": {
           "net5.0": {
             "targetAlias": "net5.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "C:\\Users\\wayne\\source\\repos\\Blazor\\ExportToExcel\\ExportToExcel.csproj": {
+                "projectPath": "C:\\Users\\wayne\\source\\repos\\Blazor\\ExportToExcel\\ExportToExcel.csproj"
+              }
+            }
           }
         },
         "warningProperties": {

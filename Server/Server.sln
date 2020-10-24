@@ -13,7 +13,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure", "Libraries
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shared", "Libraries\Shared\Shared.csproj", "{D0A72AC8-7B8F-457A-ADE5-524F2A08339D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityUI", "Libraries\IdentityUI\IdentityUI.csproj", "{013EF8CD-0922-462E-996C-94E05671C634}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityUI", "Libraries\IdentityUI\IdentityUI.csproj", "{013EF8CD-0922-462E-996C-94E05671C634}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExportToExcel", "..\ExportToExcel\ExportToExcel.csproj", "{11E85A26-4237-4D19-AC93-CDF98D1D4D36}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{013EF8CD-0922-462E-996C-94E05671C634}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{013EF8CD-0922-462E-996C-94E05671C634}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{013EF8CD-0922-462E-996C-94E05671C634}.Release|Any CPU.Build.0 = Release|Any CPU
+		{11E85A26-4237-4D19-AC93-CDF98D1D4D36}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{11E85A26-4237-4D19-AC93-CDF98D1D4D36}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{11E85A26-4237-4D19-AC93-CDF98D1D4D36}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{11E85A26-4237-4D19-AC93-CDF98D1D4D36}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "H:\\Projects\\firemanwayne\\Blazor\\Server\\Libraries\\IdentityUI\\IdentityUI.csproj": {}
+    "C:\\Users\\wayne\\source\\repos\\Blazor\\Server\\Libraries\\IdentityUI\\IdentityUI.csproj": {}
   },
   "projects": {
-    "H:\\Projects\\firemanwayne\\Blazor\\Server\\Libraries\\Domain\\Domain.csproj": {
+    "C:\\Users\\wayne\\source\\repos\\Blazor\\Server\\Libraries\\Domain\\Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "H:\\Projects\\firemanwayne\\Blazor\\Server\\Libraries\\Domain\\Domain.csproj",
+        "projectUniqueName": "C:\\Users\\wayne\\source\\repos\\Blazor\\Server\\Libraries\\Domain\\Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "H:\\Projects\\firemanwayne\\Blazor\\Server\\Libraries\\Domain\\Domain.csproj",
-        "packagesPath": "C:\\Users\\Wayne\\.nuget\\packages\\",
-        "outputPath": "H:\\Projects\\firemanwayne\\Blazor\\Server\\Libraries\\Domain\\obj\\",
+        "projectPath": "C:\\Users\\wayne\\source\\repos\\Blazor\\Server\\Libraries\\Domain\\Domain.csproj",
+        "packagesPath": "C:\\Users\\wayne\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\wayne\\source\\repos\\Blazor\\Server\\Libraries\\Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Wayne\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\wayne\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -61,17 +61,17 @@
         }
       }
     },
-    "H:\\Projects\\firemanwayne\\Blazor\\Server\\Libraries\\IdentityUI\\IdentityUI.csproj": {
+    "C:\\Users\\wayne\\source\\repos\\Blazor\\Server\\Libraries\\IdentityUI\\IdentityUI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "H:\\Projects\\firemanwayne\\Blazor\\Server\\Libraries\\IdentityUI\\IdentityUI.csproj",
+        "projectUniqueName": "C:\\Users\\wayne\\source\\repos\\Blazor\\Server\\Libraries\\IdentityUI\\IdentityUI.csproj",
         "projectName": "IdentityUI",
-        "projectPath": "H:\\Projects\\firemanwayne\\Blazor\\Server\\Libraries\\IdentityUI\\IdentityUI.csproj",
-        "packagesPath": "C:\\Users\\Wayne\\.nuget\\packages\\",
-        "outputPath": "H:\\Projects\\firemanwayne\\Blazor\\Server\\Libraries\\IdentityUI\\obj\\",
+        "projectPath": "C:\\Users\\wayne\\source\\repos\\Blazor\\Server\\Libraries\\IdentityUI\\IdentityUI.csproj",
+        "packagesPath": "C:\\Users\\wayne\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\wayne\\source\\repos\\Blazor\\Server\\Libraries\\IdentityUI\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Wayne\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\wayne\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -85,8 +85,8 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "H:\\Projects\\firemanwayne\\Blazor\\Server\\Libraries\\Domain\\Domain.csproj": {
-                "projectPath": "H:\\Projects\\firemanwayne\\Blazor\\Server\\Libraries\\Domain\\Domain.csproj"
+              "C:\\Users\\wayne\\source\\repos\\Blazor\\Server\\Libraries\\Domain\\Domain.csproj": {
+                "projectPath": "C:\\Users\\wayne\\source\\repos\\Blazor\\Server\\Libraries\\Domain\\Domain.csproj"
               }
             }
           }
@@ -103,7 +103,7 @@
           "dependencies": {
             "Microsoft.AspNetCore.Identity.UI": {
               "target": "Package",
-              "version": "[3.1.9, )"
+              "version": "[5.0.0-rc.2.20475.17, )"
             }
           },
           "imports": [

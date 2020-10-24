@@ -3,23 +3,28 @@
 
 @using System.IO
 @using Shared.Models.Concrete
-
+@using ExportToExcel.Components
+@using ExportToExcel 
+@using ExportToExcel.Delegates
+ 
 <div class="container">
     <InputFile OnChange="HandleFileChange" multiple class="form-control" />
 </div>
 
 @if (Sheet != null)
 {
-<div class="container" style="max-height:800px;overflow-y:auto">
+<div class="container-fluid" style="max-height:800px;overflow-y:auto">
     <table class="table table-bordered">
         <Virtualize TItem="SheetRow" Context="d" Items="Sheet.DataRows">
 
             <ItemContent>
                 <tr>
                     <td>Row: @d.Index</td>
+
                     @foreach (var item in d.Columns)
                     {
                         <td>Column: @item.ColumnIndex</td>
+
                         <td>@item.Value</td>
                     }
                 </tr>
@@ -30,11 +35,24 @@
 
         </Virtualize>
     </table>
+
+    <ExcelExport ButtonText=ButtonText
+                 CssClass="btn btn-outline-success"
+                 ReportName="@ReportName"
+                 TValue="SheetRow"
+                 Request="ExportRequest"
+                 DownloadToBrowser="DownloadFile"/>
 </div>
 }
 @code{
 
     SpreadSheet Sheet { get; set; }
+
+    string ButtonText => "Export To Excel";
+
+    string FileName => $"{ DateTime.UtcNow.ToString("MM:dd:yyyy:hh:mm:ss") }";
+
+    string ReportName => "Excel Test Document";
 
     async Task HandleFileChange(InputFileChangeEventArgs a)
     {
@@ -49,6 +67,25 @@
 
             while (!reader.EndOfStream)
                 Sheet.AddRow(await reader.ReadLineAsync());
+
+            await ExportRequest();
         }
+    }
+
+    Task<ExcelDocumentRequest<SheetRow>> ExportRequest()
+    {
+        var request = new ExcelDocumentRequest<SheetRow>(FileName, Sheet.DataRows);
+
+        return Task.FromResult(request);
+    }
+
+    Task<UploadResponse> DownloadFile(ExcelDocumentResponse Response)
+    {
+        return Task.FromResult(new UploadFileLocalResponse
+        {
+            FileName = Response.FileName,
+            ContentType = ExcelConstants.ContentType,
+            FileContent = Convert.ToBase64String(Response.SpreadSheetBytes)
+        } as UploadResponse);
     }
 }

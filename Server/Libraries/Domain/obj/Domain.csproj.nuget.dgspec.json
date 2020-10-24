@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "H:\\Projects\\firemanwayne\\Blazor\\Server\\Libraries\\Domain\\Domain.csproj": {}
+    "C:\\Users\\wayne\\source\\repos\\Blazor\\Server\\Libraries\\Domain\\Domain.csproj": {}
   },
   "projects": {
-    "H:\\Projects\\firemanwayne\\Blazor\\Server\\Libraries\\Domain\\Domain.csproj": {
+    "C:\\Users\\wayne\\source\\repos\\Blazor\\Server\\Libraries\\Domain\\Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "H:\\Projects\\firemanwayne\\Blazor\\Server\\Libraries\\Domain\\Domain.csproj",
+        "projectUniqueName": "C:\\Users\\wayne\\source\\repos\\Blazor\\Server\\Libraries\\Domain\\Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "H:\\Projects\\firemanwayne\\Blazor\\Server\\Libraries\\Domain\\Domain.csproj",
-        "packagesPath": "C:\\Users\\Wayne\\.nuget\\packages\\",
-        "outputPath": "H:\\Projects\\firemanwayne\\Blazor\\Server\\Libraries\\Domain\\obj\\",
+        "projectPath": "C:\\Users\\wayne\\source\\repos\\Blazor\\Server\\Libraries\\Domain\\Domain.csproj",
+        "packagesPath": "C:\\Users\\wayne\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\wayne\\source\\repos\\Blazor\\Server\\Libraries\\Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Wayne\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\wayne\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

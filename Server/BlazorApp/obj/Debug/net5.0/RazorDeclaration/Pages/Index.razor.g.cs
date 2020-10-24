@@ -13,91 +13,112 @@ namespace BlazorApp.Pages
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Components;
 #nullable restore
-#line 1 "H:\Projects\firemanwayne\Blazor\Server\BlazorApp\_Imports.razor"
+#line 1 "C:\Users\wayne\source\repos\Blazor\Server\BlazorApp\_Imports.razor"
 using System.Net.Http;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "H:\Projects\firemanwayne\Blazor\Server\BlazorApp\_Imports.razor"
+#line 2 "C:\Users\wayne\source\repos\Blazor\Server\BlazorApp\_Imports.razor"
 using Microsoft.AspNetCore.Authorization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 3 "H:\Projects\firemanwayne\Blazor\Server\BlazorApp\_Imports.razor"
+#line 3 "C:\Users\wayne\source\repos\Blazor\Server\BlazorApp\_Imports.razor"
 using Microsoft.AspNetCore.Components.Authorization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 4 "H:\Projects\firemanwayne\Blazor\Server\BlazorApp\_Imports.razor"
+#line 4 "C:\Users\wayne\source\repos\Blazor\Server\BlazorApp\_Imports.razor"
 using Microsoft.AspNetCore.Components.Forms;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 5 "H:\Projects\firemanwayne\Blazor\Server\BlazorApp\_Imports.razor"
+#line 5 "C:\Users\wayne\source\repos\Blazor\Server\BlazorApp\_Imports.razor"
 using Microsoft.AspNetCore.Components.Routing;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 6 "H:\Projects\firemanwayne\Blazor\Server\BlazorApp\_Imports.razor"
+#line 6 "C:\Users\wayne\source\repos\Blazor\Server\BlazorApp\_Imports.razor"
 using Microsoft.AspNetCore.Components.Web;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 7 "H:\Projects\firemanwayne\Blazor\Server\BlazorApp\_Imports.razor"
+#line 7 "C:\Users\wayne\source\repos\Blazor\Server\BlazorApp\_Imports.razor"
 using Microsoft.AspNetCore.Components.Web.Virtualization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 8 "H:\Projects\firemanwayne\Blazor\Server\BlazorApp\_Imports.razor"
+#line 8 "C:\Users\wayne\source\repos\Blazor\Server\BlazorApp\_Imports.razor"
 using Microsoft.JSInterop;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 11 "H:\Projects\firemanwayne\Blazor\Server\BlazorApp\_Imports.razor"
+#line 11 "C:\Users\wayne\source\repos\Blazor\Server\BlazorApp\_Imports.razor"
 using BlazorApp;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 13 "H:\Projects\firemanwayne\Blazor\Server\BlazorApp\_Imports.razor"
+#line 13 "C:\Users\wayne\source\repos\Blazor\Server\BlazorApp\_Imports.razor"
 using BlazorApp.Pages;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 4 "H:\Projects\firemanwayne\Blazor\Server\BlazorApp\Pages\Index.razor"
+#line 4 "C:\Users\wayne\source\repos\Blazor\Server\BlazorApp\Pages\Index.razor"
 using System.IO;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 5 "H:\Projects\firemanwayne\Blazor\Server\BlazorApp\Pages\Index.razor"
+#line 5 "C:\Users\wayne\source\repos\Blazor\Server\BlazorApp\Pages\Index.razor"
 using Shared.Models.Concrete;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "H:\Projects\firemanwayne\Blazor\Server\BlazorApp\Pages\Index.razor"
+#line 6 "C:\Users\wayne\source\repos\Blazor\Server\BlazorApp\Pages\Index.razor"
+using ExportToExcel.Components;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 7 "C:\Users\wayne\source\repos\Blazor\Server\BlazorApp\Pages\Index.razor"
+using ExportToExcel;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 8 "C:\Users\wayne\source\repos\Blazor\Server\BlazorApp\Pages\Index.razor"
+using ExportToExcel.Delegates;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 2 "C:\Users\wayne\source\repos\Blazor\Server\BlazorApp\Pages\Index.razor"
            [Authorize]
 
 #line default
@@ -112,10 +133,16 @@ using Shared.Models.Concrete;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 35 "H:\Projects\firemanwayne\Blazor\Server\BlazorApp\Pages\Index.razor"
+#line 47 "C:\Users\wayne\source\repos\Blazor\Server\BlazorApp\Pages\Index.razor"
       
 
     SpreadSheet Sheet { get; set; }
+
+    string ButtonText => "Export To Excel";
+
+    string FileName => $"{ DateTime.UtcNow.ToString("MM:dd:yyyy:hh:mm:ss") }";
+
+    string ReportName => "Excel Test Document";
 
     async Task HandleFileChange(InputFileChangeEventArgs a)
     {
@@ -130,7 +157,26 @@ using Shared.Models.Concrete;
 
             while (!reader.EndOfStream)
                 Sheet.AddRow(await reader.ReadLineAsync());
+
+            await ExportRequest();
         }
+    }
+
+    Task<ExcelDocumentRequest<SheetRow>> ExportRequest()
+    {
+        var request = new ExcelDocumentRequest<SheetRow>(FileName, Sheet.DataRows);
+
+        return Task.FromResult(request);
+    }
+
+    Task<UploadResponse> DownloadFile(ExcelDocumentResponse Response)
+    {
+        return Task.FromResult(new UploadFileLocalResponse
+        {
+            FileName = Response.FileName,
+            ContentType = ExcelConstants.ContentType,
+            FileContent = Convert.ToBase64String(Response.SpreadSheetBytes)
+        } as UploadResponse);
     }
 
 #line default
