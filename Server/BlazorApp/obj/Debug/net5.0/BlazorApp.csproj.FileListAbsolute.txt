@@ -244,3 +244,4 @@ H:\Projects\firemanwayne\Blazor\Server\BlazorApp\obj\Debug\net5.0\BlazorApp.dll
 H:\Projects\firemanwayne\Blazor\Server\BlazorApp\obj\Debug\net5.0\ref\BlazorApp.dll
 H:\Projects\firemanwayne\Blazor\Server\BlazorApp\obj\Debug\net5.0\BlazorApp.pdb
 H:\Projects\firemanwayne\Blazor\Server\BlazorApp\obj\Debug\net5.0\BlazorApp.genruntimeconfig.cache
+H:\Projects\firemanwayne\Blazor\Server\BlazorApp\bin\Debug\net5.0\Domain.StaticWebAssets.xml

@@ -54,3 +54,4 @@ H:\Projects\firemanwayne\Blazor\Server\Libraries\Application\obj\Debug\net5.0\Ap
 H:\Projects\firemanwayne\Blazor\Server\Libraries\Application\obj\Debug\net5.0\Application.dll
 H:\Projects\firemanwayne\Blazor\Server\Libraries\Application\obj\Debug\net5.0\ref\Application.dll
 H:\Projects\firemanwayne\Blazor\Server\Libraries\Application\obj\Debug\net5.0\Application.pdb
+H:\Projects\firemanwayne\Blazor\Server\Libraries\Application\bin\Debug\net5.0\Domain.StaticWebAssets.xml

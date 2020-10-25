@@ -88,7 +88,11 @@
         "frameworks": {
           "net5.0": {
             "targetAlias": "net5.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "H:\\Projects\\firemanwayne\\Blazor\\Server\\Libraries\\Shared\\Shared.csproj": {
+                "projectPath": "H:\\Projects\\firemanwayne\\Blazor\\Server\\Libraries\\Shared\\Shared.csproj"
+              }
+            }
           }
         },
         "warningProperties": {

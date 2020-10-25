@@ -3,51 +3,67 @@
 
 @using System.IO
 @using ExportToExcel.Components
-@using ExportToExcel 
+@using ExportToExcel
 @using ExportToExcel.Delegates
- 
+@using Domain.IdentityManagement.UserAggregate
+@using Microsoft.AspNetCore.Identity
+
 <div class="container">
     <InputFile OnChange="HandleFileChange" multiple class="form-control" />
 </div>
 
+<ExcelExport ButtonText=UserButtonText
+             CssClass="btn btn-outline-success"
+             ReportName=@UserReportName
+             TValue="User"
+             Request="ExportUserRequest"
+             DownloadToBrowser="DownloadFile" />
+
 @if (Sheet != null)
 {
-<div class="container-fluid" style="max-height:800px;overflow-y:auto">
-    <table class="table table-bordered">
-        <Virtualize TItem="SheetRow" Context="d" Items="Sheet.DataRows">
-
-            <ItemContent>
-                <tr>
-                    <td>Row: @d.Index</td>
-
-                    @foreach (var item in d.Columns)
-                    {
-                        <td>Column: @item.ColumnIndex</td>
-
-                        <td>@item.Value</td>
-                    }
-                </tr>
-            </ItemContent>
-            <Placeholder>
-                <p>Loading&hellip;</p>
-            </Placeholder>
-
-        </Virtualize>
-    </table>
 
     <ExcelExport ButtonText=ButtonText
                  CssClass="btn btn-outline-success"
                  ReportName="@ReportName"
                  TValue="SheetRow"
                  Request="ExportRequest"
-                 DownloadToBrowser="DownloadFile"/>
-</div>
+                 DownloadToBrowser="DownloadFile" />
+
+    <div class="container-fluid" style="max-height:800px;overflow-y:auto">
+        <table class="table table-bordered">
+            <Virtualize TItem="SheetRow" Context="d" Items="Sheet.DataRows">
+
+                <ItemContent>
+                    <tr>
+                        <td>Row: @d.Index</td>
+
+                        @foreach (var item in d.Columns)
+                        {
+                            <td>Column: @item.ColumnIndex</td>
+
+                            <td>@item.Value</td>
+                        }
+                    </tr>
+                </ItemContent>
+                <Placeholder>
+                    <p>Loading&hellip;</p>
+                </Placeholder>
+
+            </Virtualize>
+        </table>
+    </div>
 }
 @code{
+
+    [Inject] UserManager<User> UserManager { get; set; }
 
     SpreadSheet Sheet { get; set; }
 
     string ButtonText => "Export To Excel";
+
+    string UserButtonText => "Export Users To Excel";
+
+    string UserReportName => "Users Report";
 
     string FileName => $"{ DateTime.UtcNow.ToString("MM:dd:yyyy:hh:mm:ss") }";
 
@@ -69,6 +85,17 @@
 
             await ExportRequest();
         }
+    }
+    Task<ExcelDocumentRequest<User>> ExportUserRequest()
+    {
+        Func<IEnumerable<User>> Factory = ()
+            => UserManager
+            .Users
+            .ToList();
+
+        var request = new ExcelDocumentRequest<User>(FileName, Factory);
+
+        return Task.FromResult(request);
     }
 
     Task<ExcelDocumentRequest<SheetRow>> ExportRequest()

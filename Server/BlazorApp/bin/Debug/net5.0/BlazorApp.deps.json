@@ -1693,6 +1693,9 @@
         }
       },
       "Domain/1.0.0": {
+        "dependencies": {
+          "Shared": "1.0.0"
+        },
         "runtime": {
           "Domain.dll": {}
         },

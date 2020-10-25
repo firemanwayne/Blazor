@@ -111,6 +111,20 @@ using ExportToExcel.Delegates;
 #line hidden
 #nullable disable
 #nullable restore
+#line 8 "H:\Projects\firemanwayne\Blazor\Server\BlazorApp\Pages\Index.razor"
+using Domain.IdentityManagement.UserAggregate;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 9 "H:\Projects\firemanwayne\Blazor\Server\BlazorApp\Pages\Index.razor"
+using Microsoft.AspNetCore.Identity;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
 #line 2 "H:\Projects\firemanwayne\Blazor\Server\BlazorApp\Pages\Index.razor"
            [Authorize]
 
@@ -126,12 +140,18 @@ using ExportToExcel.Delegates;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 46 "H:\Projects\firemanwayne\Blazor\Server\BlazorApp\Pages\Index.razor"
+#line 56 "H:\Projects\firemanwayne\Blazor\Server\BlazorApp\Pages\Index.razor"
       
+
+    [Inject] UserManager<User> UserManager { get; set; }
 
     SpreadSheet Sheet { get; set; }
 
     string ButtonText => "Export To Excel";
+
+    string UserButtonText => "Export Users To Excel";
+
+    string UserReportName => "Users Report";
 
     string FileName => $"{ DateTime.UtcNow.ToString("MM:dd:yyyy:hh:mm:ss") }";
 
@@ -153,6 +173,17 @@ using ExportToExcel.Delegates;
 
             await ExportRequest();
         }
+    }
+    Task<ExcelDocumentRequest<User>> ExportUserRequest()
+    {
+        Func<IEnumerable<User>> Factory = ()
+            => UserManager
+            .Users
+            .ToList();
+
+        var request = new ExcelDocumentRequest<User>(FileName, Factory);
+
+        return Task.FromResult(request);
     }
 
     Task<ExcelDocumentRequest<SheetRow>> ExportRequest()
