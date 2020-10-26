@@ -120,12 +120,8 @@ C:\Users\wayne\source\repos\Blazor\Server\BlazorApp\bin\Debug\net5.0\ICSharpCode
 C:\Users\wayne\source\repos\Blazor\Server\BlazorApp\bin\Debug\net5.0\ExportToExcel.dll
 C:\Users\wayne\source\repos\Blazor\Server\BlazorApp\bin\Debug\net5.0\ExportToExcel.pdb
 H:\Projects\firemanwayne\Blazor\Server\BlazorApp\bin\Debug\net5.0\libman.json
-H:\Projects\firemanwayne\Blazor\Server\BlazorApp\bin\Debug\net5.0\Shared.StaticWebAssets.xml
-H:\Projects\firemanwayne\Blazor\Server\BlazorApp\bin\Debug\net5.0\Infrastructure.StaticWebAssets.xml
-H:\Projects\firemanwayne\Blazor\Server\BlazorApp\bin\Debug\net5.0\Application.StaticWebAssets.xml
 H:\Projects\firemanwayne\Blazor\Server\BlazorApp\bin\Debug\net5.0\IdentityUI.Views.dll
 H:\Projects\firemanwayne\Blazor\Server\BlazorApp\bin\Debug\net5.0\IdentityUI.Views.pdb
-H:\Projects\firemanwayne\Blazor\Server\BlazorApp\bin\Debug\net5.0\IdentityUI.StaticWebAssets.xml
 H:\Projects\firemanwayne\Blazor\Server\BlazorApp\bin\Debug\net5.0\appsettings.Development.json
 H:\Projects\firemanwayne\Blazor\Server\BlazorApp\bin\Debug\net5.0\appsettings.json
 H:\Projects\firemanwayne\Blazor\Server\BlazorApp\bin\Debug\net5.0\BlazorApp.StaticWebAssets.xml
@@ -244,4 +240,8 @@ H:\Projects\firemanwayne\Blazor\Server\BlazorApp\obj\Debug\net5.0\BlazorApp.dll
 H:\Projects\firemanwayne\Blazor\Server\BlazorApp\obj\Debug\net5.0\ref\BlazorApp.dll
 H:\Projects\firemanwayne\Blazor\Server\BlazorApp\obj\Debug\net5.0\BlazorApp.pdb
 H:\Projects\firemanwayne\Blazor\Server\BlazorApp\obj\Debug\net5.0\BlazorApp.genruntimeconfig.cache
+H:\Projects\firemanwayne\Blazor\Server\BlazorApp\bin\Debug\net5.0\Shared.StaticWebAssets.xml
 H:\Projects\firemanwayne\Blazor\Server\BlazorApp\bin\Debug\net5.0\Domain.StaticWebAssets.xml
+H:\Projects\firemanwayne\Blazor\Server\BlazorApp\bin\Debug\net5.0\Infrastructure.StaticWebAssets.xml
+H:\Projects\firemanwayne\Blazor\Server\BlazorApp\bin\Debug\net5.0\Application.StaticWebAssets.xml
+H:\Projects\firemanwayne\Blazor\Server\BlazorApp\bin\Debug\net5.0\IdentityUI.StaticWebAssets.xml

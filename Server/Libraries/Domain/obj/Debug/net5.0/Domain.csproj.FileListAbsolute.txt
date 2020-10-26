@@ -29,7 +29,6 @@ C:\Users\wayne\source\repos\Blazor\Server\Libraries\Domain\obj\Debug\net5.0\Doma
 C:\Users\wayne\source\repos\Blazor\Server\Libraries\Domain\obj\Debug\net5.0\ref\Domain.dll
 C:\Users\wayne\source\repos\Blazor\Server\Libraries\Domain\obj\Debug\net5.0\Domain.pdb
 H:\Projects\firemanwayne\Blazor\Server\Libraries\Domain\bin\Debug\net5.0\libman.json
-H:\Projects\firemanwayne\Blazor\Server\Libraries\Domain\bin\Debug\net5.0\Shared.StaticWebAssets.xml
 H:\Projects\firemanwayne\Blazor\Server\Libraries\Domain\bin\Debug\net5.0\Domain.StaticWebAssets.xml
 H:\Projects\firemanwayne\Blazor\Server\Libraries\Domain\bin\Debug\net5.0\ExportToExcel.dll
 H:\Projects\firemanwayne\Blazor\Server\Libraries\Domain\bin\Debug\net5.0\Shared.dll
@@ -37,3 +36,4 @@ H:\Projects\firemanwayne\Blazor\Server\Libraries\Domain\bin\Debug\net5.0\Shared.
 H:\Projects\firemanwayne\Blazor\Server\Libraries\Domain\bin\Debug\net5.0\ExportToExcel.pdb
 H:\Projects\firemanwayne\Blazor\Server\Libraries\Domain\obj\Debug\net5.0\Domain.csprojAssemblyReference.cache
 H:\Projects\firemanwayne\Blazor\Server\Libraries\Domain\obj\Debug\net5.0\Domain.csproj.CopyComplete
+H:\Projects\firemanwayne\Blazor\Server\Libraries\Domain\bin\Debug\net5.0\Shared.StaticWebAssets.xml

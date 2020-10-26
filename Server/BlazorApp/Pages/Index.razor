@@ -4,20 +4,75 @@
 @using System.IO
 @using ExportToExcel.Components
 @using ExportToExcel
-@using ExportToExcel.Delegates
 @using Domain.IdentityManagement.UserAggregate
 @using Microsoft.AspNetCore.Identity
+@using NPOI.SS.UserModel
 
 <div class="container">
     <InputFile OnChange="HandleFileChange" multiple class="form-control" />
 </div>
 
+<fieldset>
+    <legend>Header Style</legend>
+    <div class="form-group">
+        <label for="backgroundIndex">Background Color</label>
+        <select id="backgroundIndex" class="form-control" @bind="HeaderStyle.BackgroundColorIndex">
+            <option value="@string.Empty">Select Background Color</option>
+            @foreach (var item in HeaderStyle.Colors)
+            {
+                var hexValue = $"#{item.R:X2}{item.G:X2}{item.B:X2}";
+
+                <option style="background-color:@item.ToKnownColor().ToString()" value="@hexValue">@item.Name</option>
+            }
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="foregroundIndex">Forground Color</label>
+        <select id="foregroundIndex" class="form-control" @bind="HeaderStyle.ForegroundColorIndex">
+            <option value="@string.Empty">Select Foreground Color</option>
+            @foreach (var item in HeaderStyle.Colors)
+            {
+                var hexValue = $"#{item.R:X2}{item.G:X2}{item.B:X2}";
+
+                <option style="background-color:@item.ToKnownColor().ToString()" value="@hexValue">@item.Name</option>
+            }
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="horizontalAlign">Horizontal Alignment</label>
+        <select id="horizontalAlign" class="form-control" @bind="HeaderStyle.HorizontalAlignment">
+            <option value="">Select Horizontal Alignment</option>
+            <option value="@HorizontalAlignment.Center">Center</option>
+            <option value="@HorizontalAlignment.Left">Left</option>
+            <option value="@HorizontalAlignment.Right">Right</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="verticalAlign">Vertical Alignment</label>
+        <select id="verticalAlign" class="form-control" @bind="HeaderStyle.VerticalAlignment">
+            <option value="">Select Vertical Alignment</option>
+            <option value="@VerticalAlignment.Center">Center</option>
+            <option value="@VerticalAlignment.Top">Top</option>
+            <option value="@VerticalAlignment.Bottom">Bottom</option>
+        </select>
+    </div>
+</fieldset>
 <ExcelExport ButtonText=UserButtonText
              CssClass="btn btn-outline-success"
              ReportName=@UserReportName
-             TValue="User"
-             Request="ExportUserRequest"
+             TValue="UserSpreadSheet"
+             HeaderStyle="HeaderStyle"
+             BodyStyle="BodyStyle"
+             RequestDelegate="ExportUserRequest"
              DownloadToBrowser="DownloadFile" />
+
+@if (!string.IsNullOrEmpty(Source))
+{
+    <iframe allowfullscreen="true" src="@Source" style="width:100%;height:800px;border:none" frameborder="0" />
+}
 
 @if (Sheet != null)
 {
@@ -26,7 +81,9 @@
                  CssClass="btn btn-outline-success"
                  ReportName="@ReportName"
                  TValue="SheetRow"
-                 Request="ExportRequest"
+                 HeaderStyle="HeaderStyle"
+                 BodyStyle="BodyStyle"
+                 RequestDelegate="ExportRequest"
                  DownloadToBrowser="DownloadFile" />
 
     <div class="container-fluid" style="max-height:800px;overflow-y:auto">
@@ -57,6 +114,10 @@
 
     [Inject] UserManager<User> UserManager { get; set; }
 
+    HeaderStyle HeaderStyle { get; set; } = new HeaderStyle();
+
+    BodyStyle BodyStyle { get; set; } = new BodyStyle();
+
     SpreadSheet Sheet { get; set; }
 
     string ButtonText => "Export To Excel";
@@ -68,6 +129,8 @@
     string FileName => $"{ DateTime.UtcNow.ToString("MM:dd:yyyy:hh:mm:ss") }";
 
     string ReportName => "Excel Test Document";
+
+    string Source { get; set; }
 
     async Task HandleFileChange(InputFileChangeEventArgs a)
     {
@@ -83,35 +146,31 @@
             while (!reader.EndOfStream)
                 Sheet.AddRow(await reader.ReadLineAsync());
 
-            await ExportRequest();
+            ExportRequest();
         }
     }
-    Task<ExcelDocumentRequest<User>> ExportUserRequest()
+
+    IEnumerable<UserSpreadSheet> ExportUserRequest()
     {
-        Func<IEnumerable<User>> Factory = ()
-            => UserManager
-            .Users
-            .ToList();
-
-        var request = new ExcelDocumentRequest<User>(FileName, Factory);
-
-        return Task.FromResult(request);
+        return UserManager.Users.Cast<UserSpreadSheet>().ToList();
     }
 
-    Task<ExcelDocumentRequest<SheetRow>> ExportRequest()
+    IEnumerable<SheetRow> ExportRequest()
     {
-        var request = new ExcelDocumentRequest<SheetRow>(FileName, Sheet.DataRows);
-
-        return Task.FromResult(request);
+        return Sheet.DataRows.ToList();
     }
 
     Task<UploadResponse> DownloadFile(ExcelDocumentResponse Response)
     {
-        return Task.FromResult(new UploadFileLocalResponse
+        var response = new UploadFileLocalResponse
         {
             FileName = Response.FileName,
             ContentType = ExcelConstants.ContentType,
             FileContent = Convert.ToBase64String(Response.SpreadSheetBytes)
-        } as UploadResponse);
+        };
+
+        Source = response.FileContent;
+
+        return Task.FromResult(response as UploadResponse);
     }
 }

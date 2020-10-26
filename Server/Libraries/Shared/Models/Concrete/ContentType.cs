@@ -2907,8 +2907,8 @@ namespace Shared.Models.Concrete
         public bool IsText { get; set; }
         public bool IsBinary
         {
-            get => !this.IsText;            
-            set => this.IsText = !value;            
+            get => !IsText;            
+            set => IsText = !value;            
         }
     }
 
@@ -2918,13 +2918,12 @@ namespace Shared.Models.Concrete
         {
             var type = ct.GetType();
             var info = type.GetMember(ct.ToString());
+
             if ((info != null) && (info.Length > 0))
             {
                 var attrs = info[0].GetCustomAttributes(typeof(Metadata), false);
-                if ((attrs != null) && (attrs.Length > 0))
-                {
-                    return attrs[0];
-                }
+                if ((attrs != null) && (attrs.Length > 0))                
+                    return attrs[0];                
             }
             return null;
         }
@@ -2938,13 +2937,13 @@ namespace Shared.Models.Concrete
         public static bool IsText(this ContentType ct)
         {
             var metadata = GetMetadata(ct);
-            return (metadata != null) ? ((Metadata)metadata).IsText : true;
+            return metadata == null || ((Metadata)metadata).IsText;
         }
 
         public static bool IsBinary(this ContentType ct)
         {
             var metadata = GetMetadata(ct);
-            return (metadata != null) ? ((Metadata)metadata).IsBinary : false;
+            return (metadata != null) && ((Metadata)metadata).IsBinary;
         }
     }
 }

@@ -83,7 +83,14 @@ using BlazorApp.Pages;
 #line hidden
 #nullable disable
 #nullable restore
-#line 3 "H:\Projects\firemanwayne\Blazor\Server\BlazorApp\Pages\MainLayout.razor"
+#line 4 "H:\Projects\firemanwayne\Blazor\Server\BlazorApp\Pages\MainLayout.razor"
+using System.Security.Claims;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 2 "H:\Projects\firemanwayne\Blazor\Server\BlazorApp\Pages\MainLayout.razor"
            [Authorize]
 
 #line default
@@ -96,6 +103,58 @@ using BlazorApp.Pages;
         {
         }
         #pragma warning restore 1998
+#nullable restore
+#line 6 "H:\Projects\firemanwayne\Blazor\Server\BlazorApp\Pages\MainLayout.razor"
+      
+    [Inject] AuthenticationStateProvider AuthenticationState { get; set; }
+
+    [Inject] NavigationManager NavManager { get; set; }
+
+    string Name { get; set; }
+
+    ClaimsPrincipal CurrentUser { get; set; }
+
+    string CurrentUserId { get; set; }
+
+    protected async override Task OnInitializedAsync()
+    {
+        try
+        {
+            if (CurrentUser == null)
+                await GetAuthenticatedUser();
+
+            if (CurrentUser.Identity.IsAuthenticated)
+            {
+                var FirstName = CurrentUser.FindFirstValue("FirstName");
+                var LastName = CurrentUser.FindFirstValue("LastName");
+
+                Name = $"{FirstName} {LastName}";
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+    }
+
+    async Task GetAuthenticatedUser()
+    {
+        try
+        {
+            var result = await AuthenticationState.GetAuthenticationStateAsync();
+
+            CurrentUser = result.User;
+            CurrentUserId = result.User.FindFirstValue(ClaimTypes.NameIdentifier);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+    }
+
+#line default
+#line hidden
+#nullable disable
     }
 }
 #pragma warning restore 1591

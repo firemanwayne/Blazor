@@ -105,21 +105,21 @@ using ExportToExcel;
 #nullable disable
 #nullable restore
 #line 7 "H:\Projects\firemanwayne\Blazor\Server\BlazorApp\Pages\Index.razor"
-using ExportToExcel.Delegates;
-
-#line default
-#line hidden
-#nullable disable
-#nullable restore
-#line 8 "H:\Projects\firemanwayne\Blazor\Server\BlazorApp\Pages\Index.razor"
 using Domain.IdentityManagement.UserAggregate;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 9 "H:\Projects\firemanwayne\Blazor\Server\BlazorApp\Pages\Index.razor"
+#line 8 "H:\Projects\firemanwayne\Blazor\Server\BlazorApp\Pages\Index.razor"
 using Microsoft.AspNetCore.Identity;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 9 "H:\Projects\firemanwayne\Blazor\Server\BlazorApp\Pages\Index.razor"
+using NPOI.SS.UserModel;
 
 #line default
 #line hidden
@@ -140,10 +140,14 @@ using Microsoft.AspNetCore.Identity;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 56 "H:\Projects\firemanwayne\Blazor\Server\BlazorApp\Pages\Index.razor"
+#line 113 "H:\Projects\firemanwayne\Blazor\Server\BlazorApp\Pages\Index.razor"
       
 
     [Inject] UserManager<User> UserManager { get; set; }
+
+    HeaderStyle HeaderStyle { get; set; } = new HeaderStyle();
+
+    BodyStyle BodyStyle { get; set; } = new BodyStyle();
 
     SpreadSheet Sheet { get; set; }
 
@@ -156,6 +160,8 @@ using Microsoft.AspNetCore.Identity;
     string FileName => $"{ DateTime.UtcNow.ToString("MM:dd:yyyy:hh:mm:ss") }";
 
     string ReportName => "Excel Test Document";
+
+    string Source { get; set; }
 
     async Task HandleFileChange(InputFileChangeEventArgs a)
     {
@@ -171,36 +177,32 @@ using Microsoft.AspNetCore.Identity;
             while (!reader.EndOfStream)
                 Sheet.AddRow(await reader.ReadLineAsync());
 
-            await ExportRequest();
+            ExportRequest();
         }
     }
-    Task<ExcelDocumentRequest<User>> ExportUserRequest()
+
+    IEnumerable<UserSpreadSheet> ExportUserRequest()
     {
-        Func<IEnumerable<User>> Factory = ()
-            => UserManager
-            .Users
-            .ToList();
-
-        var request = new ExcelDocumentRequest<User>(FileName, Factory);
-
-        return Task.FromResult(request);
+        return UserManager.Users.Cast<UserSpreadSheet>().ToList();
     }
 
-    Task<ExcelDocumentRequest<SheetRow>> ExportRequest()
+    IEnumerable<SheetRow> ExportRequest()
     {
-        var request = new ExcelDocumentRequest<SheetRow>(FileName, Sheet.DataRows);
-
-        return Task.FromResult(request);
+        return Sheet.DataRows.ToList();
     }
 
     Task<UploadResponse> DownloadFile(ExcelDocumentResponse Response)
     {
-        return Task.FromResult(new UploadFileLocalResponse
+        var response = new UploadFileLocalResponse
         {
             FileName = Response.FileName,
             ContentType = ExcelConstants.ContentType,
             FileContent = Convert.ToBase64String(Response.SpreadSheetBytes)
-        } as UploadResponse);
+        };
+
+        Source = response.FileContent;
+
+        return Task.FromResult(response as UploadResponse);
     }
 
 #line default

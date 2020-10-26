@@ -1,6 +1,55 @@
 ﻿@inherits LayoutComponentBase
-
 @attribute [Authorize]
+
+@using System.Security.Claims
+
+@code{
+    [Inject] AuthenticationStateProvider AuthenticationState { get; set; }
+
+    [Inject] NavigationManager NavManager { get; set; }
+
+    string Name { get; set; }
+
+    ClaimsPrincipal CurrentUser { get; set; }
+
+    string CurrentUserId { get; set; }
+
+    protected async override Task OnInitializedAsync()
+    {
+        try
+        {
+            if (CurrentUser == null)
+                await GetAuthenticatedUser();
+
+            if (CurrentUser.Identity.IsAuthenticated)
+            {
+                var FirstName = CurrentUser.FindFirstValue("FirstName");
+                var LastName = CurrentUser.FindFirstValue("LastName");
+
+                Name = $"{FirstName} {LastName}";
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+    }
+
+    async Task GetAuthenticatedUser()
+    {
+        try
+        {
+            var result = await AuthenticationState.GetAuthenticationStateAsync();
+
+            CurrentUser = result.User;
+            CurrentUserId = result.User.FindFirstValue(ClaimTypes.NameIdentifier);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+    }
+}
 
 <AuthorizeView>
     <NotAuthorized>
@@ -12,6 +61,40 @@
     <Authorized>
 
         <div class="page">
+            <div id="header" class="row mods-blue-background align-items-center" style="height: 60px;">
+
+                <div class="dropdown col-xs-4" style="padding-right: 1.5em;">
+
+
+                    <div class="dropdown-menu dropdown-primary dropdown-menu-right" style="width: 20em;">
+                        <div style="padding-left: 2em; padding-right: 2em;">
+                            <div class="row mb-3 justify-content-center">
+                                <div class="col-xs-4">
+                                </div>
+                                <div class="col-xs-8 my-auto" style="font-size: 1.3em; padding-left: 1em;">
+                                    @{
+                                        if (CurrentUser != null)
+                                        {
+                                            <p>@Name</p>
+                                        }
+                                        else
+                                        {
+                                            <p>Processing Login</p>
+                                        }
+                                    }
+
+                                </div>
+                            </div>
+                            <hr />
+                            <div class="row mb-3">
+                                <a href="/Profile/MyProfile" class="btn btn-primary btn-block">My Profile</a>
+                                <a href="/logout" class="btn btn-danger btn-block">Logout</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
             <div class="sidebar">
                 <NavMenu />
             </div>
