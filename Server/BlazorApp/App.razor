@@ -5,17 +5,7 @@
     <Router AppAssembly="@typeof(Program).Assembly" AdditionalAssemblies="new[] { typeof(LoginModel).Assembly }">
 
         <Found Context="routeData">
-            <AuthorizeRouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)">
-                <NotAuthorized>
-                    <RedirectToLogin />
-                    Redirecting...
-                </NotAuthorized>
-
-                <Authorizing>
-                    Loading...
-                </Authorizing>
-
-            </AuthorizeRouteView>
+            <AuthorizeRouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)"/>
         </Found>
 
         <NotFound>

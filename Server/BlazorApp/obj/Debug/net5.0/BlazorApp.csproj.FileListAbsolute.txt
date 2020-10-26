@@ -245,3 +245,5 @@ H:\Projects\firemanwayne\Blazor\Server\BlazorApp\bin\Debug\net5.0\Domain.StaticW
 H:\Projects\firemanwayne\Blazor\Server\BlazorApp\bin\Debug\net5.0\Infrastructure.StaticWebAssets.xml
 H:\Projects\firemanwayne\Blazor\Server\BlazorApp\bin\Debug\net5.0\Application.StaticWebAssets.xml
 H:\Projects\firemanwayne\Blazor\Server\BlazorApp\bin\Debug\net5.0\IdentityUI.StaticWebAssets.xml
+H:\Projects\firemanwayne\Blazor\Server\BlazorApp\obj\Debug\net5.0\RazorDeclaration\Pages\Import.razor.g.cs
+H:\Projects\firemanwayne\Blazor\Server\BlazorApp\obj\Debug\net5.0\Razor\Pages\Import.razor.g.cs

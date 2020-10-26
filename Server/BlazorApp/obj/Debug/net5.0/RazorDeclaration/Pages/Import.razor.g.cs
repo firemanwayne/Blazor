@@ -83,56 +83,28 @@ using BlazorApp.Pages;
 #line hidden
 #nullable disable
 #nullable restore
-#line 4 "H:\Projects\firemanwayne\Blazor\Server\BlazorApp\Pages\Index.razor"
+#line 3 "H:\Projects\firemanwayne\Blazor\Server\BlazorApp\Pages\Import.razor"
 using System.IO;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 5 "H:\Projects\firemanwayne\Blazor\Server\BlazorApp\Pages\Index.razor"
-using ExportToExcel.Components;
-
-#line default
-#line hidden
-#nullable disable
-#nullable restore
-#line 6 "H:\Projects\firemanwayne\Blazor\Server\BlazorApp\Pages\Index.razor"
+#line 4 "H:\Projects\firemanwayne\Blazor\Server\BlazorApp\Pages\Import.razor"
 using ExportToExcel;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 7 "H:\Projects\firemanwayne\Blazor\Server\BlazorApp\Pages\Index.razor"
-using Domain.IdentityManagement.UserAggregate;
+#line 5 "H:\Projects\firemanwayne\Blazor\Server\BlazorApp\Pages\Import.razor"
+using ExportToExcel.Components;
 
 #line default
 #line hidden
 #nullable disable
-#nullable restore
-#line 8 "H:\Projects\firemanwayne\Blazor\Server\BlazorApp\Pages\Index.razor"
-using Microsoft.AspNetCore.Identity;
-
-#line default
-#line hidden
-#nullable disable
-#nullable restore
-#line 9 "H:\Projects\firemanwayne\Blazor\Server\BlazorApp\Pages\Index.razor"
-using NPOI.SS.UserModel;
-
-#line default
-#line hidden
-#nullable disable
-#nullable restore
-#line 2 "H:\Projects\firemanwayne\Blazor\Server\BlazorApp\Pages\Index.razor"
-           [Authorize]
-
-#line default
-#line hidden
-#nullable disable
-    [Microsoft.AspNetCore.Components.RouteAttribute("/")]
-    public partial class Index : Microsoft.AspNetCore.Components.ComponentBase
+    [Microsoft.AspNetCore.Components.RouteAttribute("/Import")]
+    public partial class Import : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
@@ -140,27 +112,42 @@ using NPOI.SS.UserModel;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 42 "H:\Projects\firemanwayne\Blazor\Server\BlazorApp\Pages\Index.razor"
-      
+#line 7 "H:\Projects\firemanwayne\Blazor\Server\BlazorApp\Pages\Import.razor"
+       
+    SpreadSheet Sheet { get; set; }
 
-    [Inject] UserManager<User> UserManager { get; set; }
+    string Source { get; set; }
+
+    string ReportName => "Excel Test Document";
+
+    string ButtonText => "Export To Excel";
 
     HeaderStyle HeaderStyle { get; set; } = new HeaderStyle();
 
     BodyStyle BodyStyle { get; set; } = new BodyStyle();
 
-    string UserButtonText => "Export Users To Excel";
-
-    string UserReportName => "Users Report";
-
-    string FileName => $"{ DateTime.UtcNow.ToString("MM:dd:yyyy:hh:mm:ss") }";
-
-    string Source { get; set; }    
-
-    IEnumerable<UserSpreadSheet> ExportUserRequest()
+    async Task HandleFileChange(InputFileChangeEventArgs a)
     {
-        return UserManager.Users.Cast<UserSpreadSheet>().ToList();
-    }    
+        if (a.File != null)
+        {
+            var buffer = new byte[a.File.Size];
+            await a.File.OpenReadStream().ReadAsync(buffer);
+            var ms = new MemoryStream(buffer);
+
+            Sheet = new SpreadSheet(a.File);
+            var reader = new StreamReader(ms);
+
+            while (!reader.EndOfStream)
+                Sheet.AddRow(await reader.ReadLineAsync());
+
+            ExportRequest();
+        }
+    }
+
+    IEnumerable<SheetRow> ExportRequest()
+    {
+        return Sheet.DataRows.ToList();
+    }
 
     Task<UploadResponse> DownloadFile(ExcelDocumentResponse Response)
     {

@@ -1,0 +1,141 @@
+﻿@page "/Import"
+
+@using System.IO
+@using ExportToExcel
+@using ExportToExcel.Components
+
+@code {
+    SpreadSheet Sheet { get; set; }
+
+    string Source { get; set; }
+
+    string ReportName => "Excel Test Document";
+
+    string ButtonText => "Export To Excel";
+
+    HeaderStyle HeaderStyle { get; set; } = new HeaderStyle();
+
+    BodyStyle BodyStyle { get; set; } = new BodyStyle();
+
+    async Task HandleFileChange(InputFileChangeEventArgs a)
+    {
+        if (a.File != null)
+        {
+            var buffer = new byte[a.File.Size];
+            await a.File.OpenReadStream().ReadAsync(buffer);
+            var ms = new MemoryStream(buffer);
+
+            Sheet = new SpreadSheet(a.File);
+            var reader = new StreamReader(ms);
+
+            while (!reader.EndOfStream)
+                Sheet.AddRow(await reader.ReadLineAsync());
+
+            ExportRequest();
+        }
+    }
+
+    IEnumerable<SheetRow> ExportRequest()
+    {
+        return Sheet.DataRows.ToList();
+    }
+
+    Task<UploadResponse> DownloadFile(ExcelDocumentResponse Response)
+    {
+        var response = new UploadFileLocalResponse
+        {
+            FileName = Response.FileName,
+            ContentType = ExcelConstants.ContentType,
+            FileContent = Convert.ToBase64String(Response.SpreadSheetBytes)
+        };
+
+        Source = response.FileContent;
+
+        return Task.FromResult(response as UploadResponse);
+    }
+
+    void HandleHeaderColorSelected(StyleColorSelectedEventArgs a)
+    {
+        HeaderStyle.SetForegroundColor(a);
+    }
+    void HandleBodyColorSelected(StyleColorSelectedEventArgs a)
+    {
+        BodyStyle.SetForegroundColor(a);
+    }
+    void HandleHeaderHorizontalAlignmentSelected(HorizontalAlignmentChangedEventArgs a)
+    {
+        HeaderStyle.SetHorizontalAlignment(a);
+    }
+    void HandleBodyHorizontalAlignmentSelected(HorizontalAlignmentChangedEventArgs a)
+    {
+        BodyStyle.SetHorizontalAlignment(a);
+    }
+    void HandleHeaderVerticalAlignmentSelected(VerticalAlignmentChangedEventArgs a)
+    {
+        HeaderStyle.SetVerticalAlignment(a);
+    }
+    void HandleBodyVerticalAlignmentSelected(VerticalAlignmentChangedEventArgs a)
+    {
+        BodyStyle.SetVerticalAlignment(a);
+    }
+}
+
+<div class="container">
+    <InputFile OnChange="HandleFileChange" multiple class="form-control" />
+</div>
+
+@if (Sheet != null)
+{
+    <fieldset>
+        <legend>Header Style</legend>
+
+        <ExcelColorSelector OnColorSelected="HandleHeaderColorSelected" />
+
+        <ExcelHorizontalAlignmentSelector OnSelected="HandleHeaderHorizontalAlignmentSelected" />
+
+        <ExcelVerticalAlignmentSelector OnSelected="HandleHeaderVerticalAlignmentSelected" />
+    </fieldset>
+
+    <fieldset>
+        <legend>Body Style</legend>
+
+        <ExcelColorSelector OnColorSelected="HandleBodyColorSelected" />
+
+        <ExcelHorizontalAlignmentSelector OnSelected="HandleBodyHorizontalAlignmentSelected" />
+
+        <ExcelVerticalAlignmentSelector OnSelected="HandleBodyVerticalAlignmentSelected" />
+    </fieldset>
+
+    <ExcelExport ButtonText=ButtonText
+                 CssClass="btn btn-outline-success"
+                 ReportName="@ReportName"
+                 TValue="SheetRow"
+                 HeaderStyle="HeaderStyle"
+                 BodyStyle="BodyStyle"
+                 RequestDelegate="ExportRequest"
+                 DownloadToBrowser="DownloadFile" />
+
+    <div class="container-fluid" style="max-height:800px;overflow-y:auto">
+        <table class="table table-bordered">
+            <Virtualize TItem="SheetRow" Context="d" Items="Sheet.DataRows">
+
+                <ItemContent>
+                    <tr>
+                        <td>Row: @d.Index</td>
+
+                        @foreach (var item in d.Columns)
+                        {
+                            <td>Column: @item.ColumnIndex</td>
+
+                            <td>@item.Value</td>
+                        }
+                    </tr>
+                </ItemContent>
+                <Placeholder>
+                    <p>Loading&hellip;</p>
+                </Placeholder>
+
+            </Virtualize>
+        </table>
+    </div>
+}
