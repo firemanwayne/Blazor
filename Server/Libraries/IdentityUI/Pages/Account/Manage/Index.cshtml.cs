@@ -2,47 +2,35 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
 
 namespace IdentityUI.Pages.Account.Manage
 {
     public partial class IndexModel : PageModel
     {
-        private readonly UserManager<User> _userManager;
-        private readonly SignInManager<User> _signInManager;
+        private readonly UserManager<User> UserManager;
+        private readonly SignInManager<User> SignInManager;
 
         public IndexModel(
             UserManager<User> userManager,
             SignInManager<User> signInManager)
         {
-            _userManager = userManager;
-            _signInManager = signInManager;
+            UserManager = userManager;
+            SignInManager = signInManager;
         }
 
         public string Username { get; set; }
-
-        [TempData]
-        public string StatusMessage { get; set; }
-
-        [BindProperty]
-        public InputModel Input { get; set; }
-
-        public class InputModel
-        {
-            [Phone]
-            [Display(Name = "Phone number")]
-            public string PhoneNumber { get; set; }
-        }
+        [TempData] public string StatusMessage { get; set; }
+        [BindProperty] public UpdateUserViewModel Input { get; set; }
 
         private async Task LoadAsync(User user)
         {
-            var userName = await _userManager.GetUserNameAsync(user);
-            var phoneNumber = await _userManager.GetPhoneNumberAsync(user);
+            var userName = await UserManager.GetUserNameAsync(user);
+            var phoneNumber = await UserManager.GetPhoneNumberAsync(user);
 
             Username = userName;
 
-            Input = new InputModel
+            Input = new UpdateUserViewModel
             {
                 PhoneNumber = phoneNumber
             };
@@ -50,11 +38,10 @@ namespace IdentityUI.Pages.Account.Manage
 
         public async Task<IActionResult> OnGetAsync()
         {
-            var user = await _userManager.GetUserAsync(User);
-            if (user == null)
-            {
-                return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
-            }
+            var user = await UserManager.GetUserAsync(User);
+            
+            if (user == null)            
+                return NotFound($"Unable to load user with ID '{UserManager.GetUserId(User)}'.");            
 
             await LoadAsync(user);
             return Page();
@@ -62,11 +49,10 @@ namespace IdentityUI.Pages.Account.Manage
 
         public async Task<IActionResult> OnPostAsync()
         {
-            var user = await _userManager.GetUserAsync(User);
-            if (user == null)
-            {
-                return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
-            }
+            var user = await UserManager.GetUserAsync(User);
+
+            if (user == null)            
+                return NotFound($"Unable to load user with ID '{UserManager.GetUserId(User)}'.");            
 
             if (!ModelState.IsValid)
             {
@@ -74,10 +60,10 @@ namespace IdentityUI.Pages.Account.Manage
                 return Page();
             }
 
-            var phoneNumber = await _userManager.GetPhoneNumberAsync(user);
+            var phoneNumber = await UserManager.GetPhoneNumberAsync(user);
             if (Input.PhoneNumber != phoneNumber)
             {
-                var setPhoneResult = await _userManager.SetPhoneNumberAsync(user, Input.PhoneNumber);
+                var setPhoneResult = await UserManager.SetPhoneNumberAsync(user, Input.PhoneNumber);
                 if (!setPhoneResult.Succeeded)
                 {
                     StatusMessage = "Unexpected error when trying to set phone number.";
@@ -85,7 +71,7 @@ namespace IdentityUI.Pages.Account.Manage
                 }
             }
 
-            await _signInManager.RefreshSignInAsync(user);
+            await SignInManager.RefreshSignInAsync(user);
             StatusMessage = "Your profile has been updated";
             return RedirectToPage();
         }

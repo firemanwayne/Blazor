@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
@@ -16,7 +15,7 @@ using Microsoft.Extensions.Logging;
 namespace IdentityUI.Pages
 {
     [AllowAnonymous]
-    public class LoginModel : PageModel
+    public partial class LoginModel : PageModel
     {
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
@@ -32,7 +31,7 @@ namespace IdentityUI.Pages
         }
 
         [BindProperty]
-        public InputModel Input { get; set; }
+        public LoginViewModel Input { get; set; }
 
         public IList<AuthenticationScheme> ExternalLogins { get; set; }
 
@@ -41,26 +40,10 @@ namespace IdentityUI.Pages
         [TempData]
         public string ErrorMessage { get; set; }
 
-        public class InputModel
-        {
-            [Required]
-            [EmailAddress]
-            public string Email { get; set; }
-
-            [Required]
-            [DataType(DataType.Password)]
-            public string Password { get; set; }
-
-            [Display(Name = "Remember me?")]
-            public bool RememberMe { get; set; }
-        }
-
         public async Task OnGetAsync(string returnUrl = null)
         {
-            if (!string.IsNullOrEmpty(ErrorMessage))
-            {
-                ModelState.AddModelError(string.Empty, ErrorMessage);
-            }
+            if (!string.IsNullOrEmpty(ErrorMessage))            
+                ModelState.AddModelError(string.Empty, ErrorMessage);            
 
             returnUrl ??= Url.Content("~/");
 
@@ -88,10 +71,9 @@ namespace IdentityUI.Pages
                     _logger.LogInformation("User logged in.");
                     return LocalRedirect(returnUrl);
                 }
-                if (result.RequiresTwoFactor)
-                {
+                if (result.RequiresTwoFactor)                
                     return RedirectToPage("./LoginWith2fa", new { ReturnUrl = returnUrl, RememberMe = Input.RememberMe });
-                }
+                
                 if (result.IsLockedOut)
                 {
                     _logger.LogWarning("User account locked out.");

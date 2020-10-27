@@ -17,6 +17,7 @@ namespace Microsoft.Extensions.DependencyInjection
 {
     public static class ApplicationServiceRegistry
     {
+        private const string LoginPath = "/Login";
         public static IServiceCollection AddApplicationServices(this IServiceCollection services, IConfiguration Config)
         {
             services.AddExportToExcel();
@@ -43,14 +44,13 @@ namespace Microsoft.Extensions.DependencyInjection
                     };
                 })                
                 .AddSignInManager<SignInManager<User>>()
-                .AddUserManager<UserManager<User>>()
-                .AddDefaultUI()
+                .AddUserManager<UserManager<User>>()             
                 .AddEntityFrameworkStores<ApplicationDbContext>()                
                 .AddDefaultTokenProviders();
 
             services.ConfigureApplicationCookie(o => 
             {
-                o.LoginPath = "/Login";
+                o.LoginPath = LoginPath;
                 o.AccessDeniedPath = "/Account/AccessDenied";
                 o.SlidingExpiration = true;
                 o.ExpireTimeSpan = TimeSpan.FromMinutes(30);
@@ -68,15 +68,15 @@ namespace Microsoft.Extensions.DependencyInjection
                         var rdt = ctx.Request.Path.ToUriComponent();
 
                         if (ctx.Request.Path.HasValue)
-                            ctx.Response.Redirect("/Login");
+                            ctx.Response.Redirect(LoginPath);
                         else
-                            ctx.Response.Redirect("/Login");
+                            ctx.Response.Redirect(LoginPath);
 
                         return Task.CompletedTask;
                     },
                     OnRedirectToAccessDenied = ctx =>
                     {
-                        ctx.Response.Redirect("/Login");
+                        ctx.Response.Redirect(LoginPath);
 
                         return Task.CompletedTask;
                     }

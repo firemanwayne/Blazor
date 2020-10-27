@@ -49,5 +49,5 @@ H:\Projects\firemanwayne\Blazor\Server\Libraries\Infrastructure\obj\Debug\net5.0
 H:\Projects\firemanwayne\Blazor\Server\Libraries\Infrastructure\obj\Debug\net5.0\Infrastructure.dll
 H:\Projects\firemanwayne\Blazor\Server\Libraries\Infrastructure\obj\Debug\net5.0\ref\Infrastructure.dll
 H:\Projects\firemanwayne\Blazor\Server\Libraries\Infrastructure\obj\Debug\net5.0\Infrastructure.pdb
-H:\Projects\firemanwayne\Blazor\Server\Libraries\Infrastructure\bin\Debug\net5.0\Domain.StaticWebAssets.xml
 H:\Projects\firemanwayne\Blazor\Server\Libraries\Infrastructure\bin\Debug\net5.0\Shared.StaticWebAssets.xml
+H:\Projects\firemanwayne\Blazor\Server\Libraries\Infrastructure\bin\Debug\net5.0\Domain.StaticWebAssets.xml

@@ -1,7 +1,5 @@
 ﻿@page "/Import"
 
-@using System.IO
-@using ExportToExcel
 @using ExportToExcel.Components
 
 @code {
@@ -82,60 +80,61 @@
 
 <div class="container">
     <InputFile OnChange="HandleFileChange" multiple class="form-control" />
+
+
+    @if (Sheet != null)
+    {
+        <fieldset class="row">
+            <legend>Header Style</legend>
+
+            <ExcelColorSelector OnColorSelected="HandleHeaderColorSelected" />
+
+            <ExcelHorizontalAlignmentSelector OnSelected="HandleHeaderHorizontalAlignmentSelected" />
+
+            <ExcelVerticalAlignmentSelector OnSelected="HandleHeaderVerticalAlignmentSelected" />
+        </fieldset>
+
+        <fieldset class="row">
+            <legend>Body Style</legend>
+
+            <ExcelColorSelector OnColorSelected="HandleBodyColorSelected" />
+
+            <ExcelHorizontalAlignmentSelector OnSelected="HandleBodyHorizontalAlignmentSelected" />
+
+            <ExcelVerticalAlignmentSelector OnSelected="HandleBodyVerticalAlignmentSelected" />
+        </fieldset>
+
+        <ExcelExport ButtonText=ButtonText
+                     CssClass="btn btn-outline-success"
+                     ReportName="@ReportName"
+                     TValue="SheetRow"
+                     HeaderStyle="HeaderStyle"
+                     BodyStyle="BodyStyle"
+                     RequestDelegate="ExportRequest"
+                     DownloadToBrowser="DownloadFile" />
+
+        <div class="container" style="max-height:800px;overflow-y:auto">
+            <table class="table table-bordered">
+                <Virtualize TItem="SheetRow" Context="d" Items="Sheet.DataRows">
+
+                    <ItemContent>
+                        <tr>
+                            <td>Row: @d.Index</td>
+
+                            @foreach (var item in d.Columns)
+                            {
+                                <td>Column: @item.ColumnIndex</td>
+
+                                <td>@item.Value</td>
+                            }
+                        </tr>
+                    </ItemContent>
+                    <Placeholder>
+                        <p>Loading&hellip;</p>
+                    </Placeholder>
+
+                </Virtualize>
+            </table>
+        </div>
+    }
 </div>
-
-@if (Sheet != null)
-{
-    <fieldset>
-        <legend>Header Style</legend>
-
-        <ExcelColorSelector OnColorSelected="HandleHeaderColorSelected" />
-
-        <ExcelHorizontalAlignmentSelector OnSelected="HandleHeaderHorizontalAlignmentSelected" />
-
-        <ExcelVerticalAlignmentSelector OnSelected="HandleHeaderVerticalAlignmentSelected" />
-    </fieldset>
-
-    <fieldset>
-        <legend>Body Style</legend>
-
-        <ExcelColorSelector OnColorSelected="HandleBodyColorSelected" />
-
-        <ExcelHorizontalAlignmentSelector OnSelected="HandleBodyHorizontalAlignmentSelected" />
-
-        <ExcelVerticalAlignmentSelector OnSelected="HandleBodyVerticalAlignmentSelected" />
-    </fieldset>
-
-    <ExcelExport ButtonText=ButtonText
-                 CssClass="btn btn-outline-success"
-                 ReportName="@ReportName"
-                 TValue="SheetRow"
-                 HeaderStyle="HeaderStyle"
-                 BodyStyle="BodyStyle"
-                 RequestDelegate="ExportRequest"
-                 DownloadToBrowser="DownloadFile" />
-
-    <div class="container-fluid" style="max-height:800px;overflow-y:auto">
-        <table class="table table-bordered">
-            <Virtualize TItem="SheetRow" Context="d" Items="Sheet.DataRows">
-
-                <ItemContent>
-                    <tr>
-                        <td>Row: @d.Index</td>
-
-                        @foreach (var item in d.Columns)
-                        {
-                            <td>Column: @item.ColumnIndex</td>
-
-                            <td>@item.Value</td>
-                        }
-                    </tr>
-                </ItemContent>
-                <Placeholder>
-                    <p>Loading&hellip;</p>
-                </Placeholder>
-
-            </Virtualize>
-        </table>
-    </div>
-}
