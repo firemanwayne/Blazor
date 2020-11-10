@@ -15,8 +15,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shared", "Libraries\Shared\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityUI", "Libraries\IdentityUI\IdentityUI.csproj", "{013EF8CD-0922-462E-996C-94E05671C634}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExportToExcel", "..\..\ExportToExcel\ExportToExcel.csproj", "{9FC80ACE-E5CA-4D34-AD4A-3C8AAB8486E1}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,10 +45,6 @@ Global
 		{013EF8CD-0922-462E-996C-94E05671C634}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{013EF8CD-0922-462E-996C-94E05671C634}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{013EF8CD-0922-462E-996C-94E05671C634}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9FC80ACE-E5CA-4D34-AD4A-3C8AAB8486E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9FC80ACE-E5CA-4D34-AD4A-3C8AAB8486E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9FC80ACE-E5CA-4D34-AD4A-3C8AAB8486E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9FC80ACE-E5CA-4D34-AD4A-3C8AAB8486E1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

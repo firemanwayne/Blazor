@@ -13,8 +13,9 @@
     <title>BlazorApp</title>
     <base href="~/" />
     <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css" />
-    <link href="css/site.css" rel="stylesheet" />    
+    <link href="css/site.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="Shared.styles.css" rel="stylesheet">
 </head>
 <body>
     <div class="container scrollbar h-100 col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12" style="padding-right: 0px; padding-left: 0px;">
@@ -22,7 +23,8 @@
     </div>
 
     <script src="_framework/blazor.server.js"></script>
-    <script src="_content/ExportToExcel/ExportToExcel.js"></script>
+
+    <script type="module" src="/_content/Simple.ExportToExcel/ToExcel.js"></script>
 
     <link href="_content/Shared/css/common.css" rel="stylesheet" />
     <link href="_content/Shared/css/SideNavBar.css" rel="stylesheet" />

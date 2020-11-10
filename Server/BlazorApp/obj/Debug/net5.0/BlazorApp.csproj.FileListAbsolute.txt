@@ -134,7 +134,6 @@ H:\Projects\firemanwayne\Blazor\Server\BlazorApp\bin\Debug\net5.0\ref\BlazorApp.
 H:\Projects\firemanwayne\Blazor\Server\BlazorApp\bin\Debug\net5.0\BlazorApp.pdb
 H:\Projects\firemanwayne\Blazor\Server\BlazorApp\bin\Debug\net5.0\BlazorApp.Views.dll
 H:\Projects\firemanwayne\Blazor\Server\BlazorApp\bin\Debug\net5.0\BlazorApp.Views.pdb
-H:\Projects\firemanwayne\Blazor\Server\BlazorApp\bin\Debug\net5.0\Humanizer.dll
 H:\Projects\firemanwayne\Blazor\Server\BlazorApp\bin\Debug\net5.0\Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.dll
 H:\Projects\firemanwayne\Blazor\Server\BlazorApp\bin\Debug\net5.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
 H:\Projects\firemanwayne\Blazor\Server\BlazorApp\bin\Debug\net5.0\Microsoft.AspNetCore.Identity.UI.Views.V4.dll
@@ -143,7 +142,6 @@ H:\Projects\firemanwayne\Blazor\Server\BlazorApp\bin\Debug\net5.0\Microsoft.Data
 H:\Projects\firemanwayne\Blazor\Server\BlazorApp\bin\Debug\net5.0\Microsoft.DotNet.PlatformAbstractions.dll
 H:\Projects\firemanwayne\Blazor\Server\BlazorApp\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.dll
 H:\Projects\firemanwayne\Blazor\Server\BlazorApp\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Abstractions.dll
-H:\Projects\firemanwayne\Blazor\Server\BlazorApp\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Design.dll
 H:\Projects\firemanwayne\Blazor\Server\BlazorApp\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Relational.dll
 H:\Projects\firemanwayne\Blazor\Server\BlazorApp\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.SqlServer.dll
 H:\Projects\firemanwayne\Blazor\Server\BlazorApp\bin\Debug\net5.0\Microsoft.Extensions.DependencyModel.dll
@@ -194,7 +192,6 @@ H:\Projects\firemanwayne\Blazor\Server\BlazorApp\bin\Debug\net5.0\Shared.dll
 H:\Projects\firemanwayne\Blazor\Server\BlazorApp\bin\Debug\net5.0\Application.pdb
 H:\Projects\firemanwayne\Blazor\Server\BlazorApp\bin\Debug\net5.0\IdentityUI.pdb
 H:\Projects\firemanwayne\Blazor\Server\BlazorApp\bin\Debug\net5.0\Domain.pdb
-H:\Projects\firemanwayne\Blazor\Server\BlazorApp\bin\Debug\net5.0\ExportToExcel.pdb
 H:\Projects\firemanwayne\Blazor\Server\BlazorApp\bin\Debug\net5.0\Infrastructure.pdb
 H:\Projects\firemanwayne\Blazor\Server\BlazorApp\bin\Debug\net5.0\Shared.pdb
 H:\Projects\firemanwayne\Blazor\Server\BlazorApp\obj\Debug\net5.0\BlazorApp.csprojAssemblyReference.cache
@@ -241,8 +238,19 @@ H:\Projects\firemanwayne\Blazor\Server\BlazorApp\obj\Debug\net5.0\RazorDeclarati
 H:\Projects\firemanwayne\Blazor\Server\BlazorApp\obj\Debug\net5.0\RazorDeclaration\Pages\HeaderBar.razor.g.cs
 H:\Projects\firemanwayne\Blazor\Server\BlazorApp\obj\Debug\net5.0\Razor\Pages\Export.razor.g.cs
 H:\Projects\firemanwayne\Blazor\Server\BlazorApp\obj\Debug\net5.0\Razor\Pages\HeaderBar.razor.g.cs
+H:\Projects\firemanwayne\Blazor\Server\BlazorApp\bin\Debug\net5.0\Microsoft.Extensions.Caching.Abstractions.dll
+H:\Projects\firemanwayne\Blazor\Server\BlazorApp\bin\Debug\net5.0\Microsoft.Extensions.Caching.Memory.dll
+H:\Projects\firemanwayne\Blazor\Server\BlazorApp\bin\Debug\net5.0\Microsoft.Extensions.Configuration.Abstractions.dll
+H:\Projects\firemanwayne\Blazor\Server\BlazorApp\bin\Debug\net5.0\Microsoft.Extensions.DependencyInjection.dll
+H:\Projects\firemanwayne\Blazor\Server\BlazorApp\bin\Debug\net5.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+H:\Projects\firemanwayne\Blazor\Server\BlazorApp\bin\Debug\net5.0\Microsoft.Extensions.FileProviders.Abstractions.dll
+H:\Projects\firemanwayne\Blazor\Server\BlazorApp\bin\Debug\net5.0\Microsoft.Extensions.Logging.dll
+H:\Projects\firemanwayne\Blazor\Server\BlazorApp\bin\Debug\net5.0\Microsoft.Extensions.Logging.Abstractions.dll
+H:\Projects\firemanwayne\Blazor\Server\BlazorApp\bin\Debug\net5.0\Microsoft.Extensions.Options.dll
+H:\Projects\firemanwayne\Blazor\Server\BlazorApp\bin\Debug\net5.0\Microsoft.Extensions.Primitives.dll
+H:\Projects\firemanwayne\Blazor\Server\BlazorApp\bin\Debug\net5.0\System.Collections.Immutable.dll
+H:\Projects\firemanwayne\Blazor\Server\BlazorApp\bin\Debug\net5.0\System.ComponentModel.Annotations.dll
+H:\Projects\firemanwayne\Blazor\Server\BlazorApp\bin\Debug\net5.0\System.Diagnostics.DiagnosticSource.dll
 H:\Projects\firemanwayne\Blazor\Server\BlazorApp\bin\Debug\net5.0\Shared.StaticWebAssets.xml
-H:\Projects\firemanwayne\Blazor\Server\BlazorApp\bin\Debug\net5.0\Domain.StaticWebAssets.xml
-H:\Projects\firemanwayne\Blazor\Server\BlazorApp\bin\Debug\net5.0\Infrastructure.StaticWebAssets.xml
-H:\Projects\firemanwayne\Blazor\Server\BlazorApp\bin\Debug\net5.0\Application.StaticWebAssets.xml
-H:\Projects\firemanwayne\Blazor\Server\BlazorApp\bin\Debug\net5.0\IdentityUI.StaticWebAssets.xml
+H:\Projects\firemanwayne\Blazor\Server\BlazorApp\bin\Debug\net5.0\System.IO.Pipelines.dll
+H:\Projects\firemanwayne\Blazor\Server\BlazorApp\bin\Debug\net5.0\Components\Tooltips\Tooltip.razor

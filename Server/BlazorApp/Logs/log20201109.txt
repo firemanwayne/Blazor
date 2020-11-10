@@ -1,0 +1,24 @@
+2020-11-09 20:04:40.476 -06:00 [FTL] Host builder error
+System.AggregateException: Some services are not able to be constructed (Error while validating the service descriptor 'ServiceType: ExportToExcel.Infrastructure.ExcelDownloadService Lifetime: Singleton ImplementationType: ExportToExcel.Infrastructure.ExcelDownloadService': Cannot consume scoped service 'Microsoft.JSInterop.IJSRuntime' from singleton 'ExportToExcel.Infrastructure.ExcelDownloadService'.)
+ ---> System.InvalidOperationException: Error while validating the service descriptor 'ServiceType: ExportToExcel.Infrastructure.ExcelDownloadService Lifetime: Singleton ImplementationType: ExportToExcel.Infrastructure.ExcelDownloadService': Cannot consume scoped service 'Microsoft.JSInterop.IJSRuntime' from singleton 'ExportToExcel.Infrastructure.ExcelDownloadService'.
+ ---> System.InvalidOperationException: Cannot consume scoped service 'Microsoft.JSInterop.IJSRuntime' from singleton 'ExportToExcel.Infrastructure.ExcelDownloadService'.
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteValidator.VisitScopeCache(ServiceCallSite scopedCallSite, CallSiteValidatorState state)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteValidator.VisitConstructor(ConstructorCallSite constructorCallSite, CallSiteValidatorState state)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSiteMain(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteValidator.VisitRootCache(ServiceCallSite singletonCallSite, CallSiteValidatorState state)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteValidator.ValidateCallSite(ServiceCallSite callSite)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.Microsoft.Extensions.DependencyInjection.ServiceLookup.IServiceProviderEngineCallback.OnCreate(ServiceCallSite callSite)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngine.ValidateService(ServiceDescriptor descriptor)
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngine.ValidateService(ServiceDescriptor descriptor)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(IEnumerable`1 serviceDescriptors, IServiceProviderEngine engine, ServiceProviderOptions options)
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(IEnumerable`1 serviceDescriptors, IServiceProviderEngine engine, ServiceProviderOptions options)
+   at Microsoft.Extensions.DependencyInjection.ServiceCollectionContainerBuilderExtensions.BuildServiceProvider(IServiceCollection services, ServiceProviderOptions options)
+   at Microsoft.Extensions.DependencyInjection.DefaultServiceProviderFactory.CreateServiceProvider(IServiceCollection containerBuilder)
+   at Microsoft.Extensions.Hosting.Internal.ServiceFactoryAdapter`1.CreateServiceProvider(Object containerBuilder)
+   at Microsoft.Extensions.Hosting.HostBuilder.CreateServiceProvider()
+   at Microsoft.Extensions.Hosting.HostBuilder.Build()
+   at BlazorApp.Program.Main(String[] args) in H:\Projects\firemanwayne\Blazor\Server\BlazorApp\Program.cs:line 32
